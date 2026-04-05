@@ -1,0 +1,15 @@
+# Database Config (for security)
+public/includes/db.config.php
+database/private_notes.txt
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# PHP/Web Server
+error_log
+.htaccess 
+
+# Dev Tools
+.vscode/
+.idea/
