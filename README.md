@@ -37,3 +37,20 @@ gp-store/
 ├── assets/                 # Frontend static files (CSS/JS*optional*)
 ├── README.md               # Quick-start guide
 └── .gitignore              # Files to ignore (db.php configs)
+
+---
+
+## 🌿 Git Workflow & Branching
+To keep development organized and avoid merge conflicts:
+
+- **main** → Stable, production-ready code (used for grading)  
+- **dev** → Integration branch for completed features  
+- **feature/[name]** → Individual work branches (ex: `feature/cart-system`)  
+
+---
+
+## 🔁 Workflow
+1. Pull latest `dev`
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature-name
