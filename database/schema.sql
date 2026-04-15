@@ -3,7 +3,7 @@ USE test_db;
 DROP TABLE IF EXISTS dog;
 
 -- test table
-CREATE TABLE dog (
+CREATE TABLE Dog (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     breed VARCHAR(100) NOT NULL,
