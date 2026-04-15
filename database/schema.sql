@@ -1,0 +1,12 @@
+USE test_db;
+
+DROP TABLE IF EXISTS dog;
+
+-- test table
+CREATE TABLE dog (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    breed VARCHAR(100) NOT NULL,
+    age INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
