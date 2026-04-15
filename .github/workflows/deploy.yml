@@ -39,6 +39,6 @@ jobs:
           username: ${{ secrets.TURING_USER }}
           key: ${{ secrets.TURING_SSH_KEY }}
           port: ${{ secrets.TURING_PORT }}
-          source: "public/*"
+          source: "."
           target: "/home/hopper/z1405381/public_html/gp_store"
           strip_components: 1
