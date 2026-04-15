@@ -35,6 +35,13 @@ jobs:
           username: ${{ secrets.TURING_USER }}
           key: ${{ secrets.TURING_SSH_KEY }}
           port: ${{ secrets.TURING_PORT }}
-          source: "."
+	  source: |
+	    public/**
+	    database/**
+	    scripts/**
+	    src/**
+	    assets/**
+	    Makefile
+	    README.md
           target: "/home/hopper/z1405381/public_html/gp_store_dev"
           overwrite: true
