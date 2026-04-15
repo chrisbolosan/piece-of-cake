@@ -50,7 +50,36 @@ To keep development organized and avoid merge conflicts:
 ---
 
 ## 🔁 Workflow
-1. Pull latest `dev`
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature-name
+# 1. Pull latest dev branch
+- git checkout dev
+- git pull origin dev
+
+# 2. Create feature branch
+- git checkout -b feature/your-feature-name
+
+# 3. Work + commit changes
+- git add .
+- git commit -m "your message"
+
+# 4. Push branch
+- git push origin feature/your-feature-name
+
+- Then open a Pull Request into dev.
+
+📌 Notes
+- All database credentials are injected securely via GitHub Secrets.
+- The /public directory is the only deployed web root.
+- Configuration files are auto-generated during deployment and not stored in Git.
+
+📦 Status
+- CI/CD Pipeline: ✅ Active
+- Database Integration: ✅ Working
+- Admin Panel: 🚧 In Progress
+- Product System: 🚧 In Progress
+
+🛠️ Tech Stack
+- PHP (Backend)
+- MySQL (Database)
+- GitHub Actions (CI/CD)
+- Apache (Turing Server)
+- HTML/CSS (Frontend)
