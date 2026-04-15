@@ -87,7 +87,15 @@ To keep development organized and avoid merge conflicts:
 🌐 Live Application Routes
 
 🏪 Storefront Production URL 
-https://students.cs.niu.edu/~z1405381/gp_store/
+https://students.cs.niu.edu/~z1405381/gp_store/public/
 
 🛠️ Admin Dashboard
-https://students.cs.niu.edu/~z1405381/gp_store/admin/
+https://students.cs.niu.edu/~z1405381/gp_store/public/admin/
+
+🌐 Development ONLY Application Routes
+
+🏪 Storefront Production URL 
+https://students.cs.niu.edu/~z1405381/gp_store_dev/public/
+
+🛠️ Admin Dashboard
+https://students.cs.niu.edu/~z1405381/gp_store_dev/public/admin/
