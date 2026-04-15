@@ -42,7 +42,7 @@ require_once __DIR__ . '/includes/config.php';
 <div class="grid">
 <?php
 try {
-    $prepared = $pdo->query("SELECT * FROM Dog");
+    $prepared = $pdo->query("SELECT * FROM S");
 
     while ($row = $prepared->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='card'>";
