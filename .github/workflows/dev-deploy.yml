@@ -1,4 +1,4 @@
-name: Development Deploy Pipeline to Turing
+name: development deploy pipeline to turing
 
 on:
   push:
@@ -10,10 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. checkout repository
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: create config.php
+      # 2. create config.php from GitHub Secrets
+      - name: Create config.php
         run: |
           mkdir -p public/includes
           {
@@ -22,12 +24,28 @@ jobs:
             echo "\$DB_NAME=\"${{ secrets.DB_NAME }}\";"
             echo "\$DB_USER=\"${{ secrets.DB_USER }}\";"
             echo "\$DB_PASS=\"${{ secrets.DB_PASS }}\";"
+            echo ""
             echo "try {"
             echo "  \$pdo = new PDO(\"mysql:host=\$DB_HOST;dbname=\$DB_NAME\", \$DB_USER, \$DB_PASS);"
-            echo "} catch (PDOException \$e) {}"
+            echo "  \$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);"
+            echo "} catch (PDOException \$e) {"
+            echo "  die(\"DB connection failed: \" . \$e->getMessage());"
+            echo "}"
             echo "?>"
           } > public/includes/config.php
 
+      # 3. make sure DEV directory exists on Turing
+      - name: Ensure DEV directory exists
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.TURING_HOST }}
+          username: ${{ secrets.TURING_USER }}
+          key: ${{ secrets.TURING_SSH_KEY }}
+          port: ${{ secrets.TURING_PORT }}
+          script: |
+            mkdir -p /home/hopper/z1405381/public_html/gp_store_dev
+
+      # 4. Deploy to DEV folder
       - name: Deploy to DEV folder on Turing
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -35,13 +53,24 @@ jobs:
           username: ${{ secrets.TURING_USER }}
           key: ${{ secrets.TURING_SSH_KEY }}
           port: ${{ secrets.TURING_PORT }}
-	  source: |
-	    public/**
-	    database/**
-	    scripts/**
-	    src/**
-	    assets/**
-	    Makefile
-	    README.md
+          source: |
+            public/**
+            database/**
+            scripts/**
+            src/**
+            assets/**
+            Makefile
+            README.md
           target: "/home/hopper/z1405381/public_html/gp_store_dev"
           overwrite: true
+
+      # 5. Fix permissions (recommended)
+      - name: Set permissions
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.TURING_HOST }}
+          username: ${{ secrets.TURING_USER }}
+          key: ${{ secrets.TURING_SSH_KEY }}
+          port: ${{ secrets.TURING_PORT }}
+          script: |
+            chmod -R 755 /home/hopper/z1405381/public_html/gp_store_dev
