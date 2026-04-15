@@ -37,12 +37,12 @@ require_once __DIR__ . '/includes/config.php';
 </head>
 <body>
 
-<h1>🐶 GP Store Cake Demo Homepage</h1>
+<h1>GP Store Cake Demo Homepage</h1>
 
 <div class="grid">
 <?php
 try {
-    $prepared = $pdo->query("SELECT * FROM dog");
+    $prepared = $pdo->query("SELECT * FROM Dog");
 
     while ($row = $prepared->fetch(PDO::FETCH_ASSOC)) {
         echo "<div class='card'>";
