@@ -1,0 +1,44 @@
+name: Deployment Pipeline to GP Store to Turing
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: create config.php from secrets
+        run: |
+          mkdir -p public/includes
+          {
+            echo "<?php"
+            echo "\$DB_HOST=\"${{ secrets.DB_HOST }}\";"
+            echo "\$DB_NAME=\"${{ secrets.DB_NAME }}\";"
+            echo "\$DB_USER=\"${{ secrets.DB_USER }}\";"
+            echo "\$DB_PASS=\"${{ secrets.DB_PASS }}\";"
+            echo ""
+            echo "try {"
+            echo "    \$pdo = new PDO(\"mysql:host=\$DB_HOST;dbname=\$DB_NAME\", \$DB_USER, \$DB_PASS);"
+            echo "    \$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);"
+            echo "} catch (PDOException \$e) {"
+            echo "    die(\"DB connection failed: \" . \$e->getMessage());"
+            echo "}"
+            echo "?>"
+          } > public/includes/config.php
+
+      - name: Deploy to School Turing Server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.TURING_HOST }}
+          username: ${{ secrets.TURING_USER }}
+          key: ${{ secrets.TURING_SSH_KEY }}
+          port: ${{ secrets.TURING_PORT }}
+          source: "public/*"
+          target: "/home/hopper/z1405381/public_html/gp_store"
+          strip_components: 1
