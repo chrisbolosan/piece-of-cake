@@ -13,3 +13,20 @@ error_log
 # Dev Tools
 .vscode/
 .idea/
+
+.env
+*.env
+config.local.php
+config.php
+*.log
+
+# temp files
+*.tmp
+*.swp
+*.bak
+
+#dependencies
+node_modules/
+
+#local scripts
+scripts/local.sh
