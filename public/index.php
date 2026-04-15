@@ -6,7 +6,7 @@ require_once __DIR__ . '/includes/config.php';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GP Store – Cakes and stuff</title>
+    <title>Piece of Cake - Cakes and stuff</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,7 +57,7 @@ require_once __DIR__ . '/includes/config.php';
 
 <div class="video-container">
     <iframe
-        src="https://www.youtube.com/embed/idx3GSL2KWs?si=uQuZ5NY_lMrV6ECD"
+	src="https://www.youtube.com/embed/idx3GSL2KWs?autoplay=1&mute=1&loop=1&playlist=idx3GSL2KWs&rel=0&playsinline=1"
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
