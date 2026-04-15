@@ -83,3 +83,11 @@ To keep development organized and avoid merge conflicts:
 - GitHub Actions (CI/CD)
 - Apache (Turing Server)
 - HTML/CSS (Frontend)
+
+🌐 Live Application Routes
+
+🏪 Storefront Production URL 
+https://students.cs.niu.edu/~z1405381/gp_store/
+
+🛠️ Admin Dashboard
+https://students.cs.niu.edu/~z1405381/gp_store/admin/
