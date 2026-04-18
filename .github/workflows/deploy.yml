@@ -1,9 +1,9 @@
-name: Development Deploy Pipeline to Turing
+name: Deployment Pipeline to GP Store to Turing
 
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   deploy:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Create config.php from secrets
+      - name: create config.php from secrets
         run: |
           mkdir -p public/includes
           {
@@ -22,29 +22,23 @@ jobs:
             echo "\$DB_NAME=\"${{ secrets.DB_NAME }}\";"
             echo "\$DB_USER=\"${{ secrets.DB_USER }}\";"
             echo "\$DB_PASS=\"${{ secrets.DB_PASS }}\";"
+            echo ""
             echo "try {"
-            echo "  \$pdo = new PDO(\"mysql:host=\$DB_HOST;dbname=\$DB_NAME\", \$DB_USER, \$DB_PASS);"
-            echo "  \$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);"
-            echo "} catch (PDOException \$e) {}"
+            echo "    \$pdo = new PDO(\"mysql:host=\$DB_HOST;dbname=\$DB_NAME\", \$DB_USER, \$DB_PASS);"
+            echo "    \$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);"
+            echo "} catch (PDOException \$e) {"
+            echo "    die(\"DB connection failed: \" . \$e->getMessage());"
+            echo "}"
             echo "?>"
           } > public/includes/config.php
 
-      - name: Deploy to DEV Turing Server
+      - name: Deploy to School Turing Server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.TURING_HOST }}
           username: ${{ secrets.TURING_USER }}
           key: ${{ secrets.TURING_SSH_KEY }}
           port: ${{ secrets.TURING_PORT }}
-          source: |
-            public/**
-            database/**
-            src/**
-            assets/**
-            scripts/**
-            Makefile
-            README.md
-            config.sample.php
+          source: "."
           target: "/home/hopper/z1405381/public_html/gp_store"
-          overwrite: true
           strip_components: 1
