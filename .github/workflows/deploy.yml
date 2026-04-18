@@ -3,7 +3,7 @@ name: Development Deploy Pipeline to Turing
 on:
   push:
     branches:
-      - dev
+      - main 
 
 jobs:
   deploy:
