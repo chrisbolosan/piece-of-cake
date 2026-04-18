@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: create config.php
+      - name: Create config.php from secrets
         run: |
           mkdir -p public/includes
           {
@@ -24,18 +24,27 @@ jobs:
             echo "\$DB_PASS=\"${{ secrets.DB_PASS }}\";"
             echo "try {"
             echo "  \$pdo = new PDO(\"mysql:host=\$DB_HOST;dbname=\$DB_NAME\", \$DB_USER, \$DB_PASS);"
+            echo "  \$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);"
             echo "} catch (PDOException \$e) {}"
             echo "?>"
           } > public/includes/config.php
 
-      - name: Deploy to DEV folder on Turing
+      - name: Deploy to DEV Turing Server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.TURING_HOST }}
           username: ${{ secrets.TURING_USER }}
           key: ${{ secrets.TURING_SSH_KEY }}
           port: ${{ secrets.TURING_PORT }}
-          source: "."
+          source: |
+            public/**
+            database/**
+            src/**
+            assets/**
+            scripts/**
+            Makefile
+            README.md
+            config.sample.php
           target: "/home/hopper/z1405381/public_html/gp_store_dev"
           overwrite: true
-          strip_components: 1	
+          strip_components: 1
