@@ -38,3 +38,4 @@ jobs:
           source: "."
           target: "/home/hopper/z1405381/public_html/gp_store_dev"
           overwrite: true
+          strip_components: 1	
