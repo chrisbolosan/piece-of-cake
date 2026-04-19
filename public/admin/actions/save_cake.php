@@ -27,7 +27,7 @@ if ($id) {
 		VALUES (?, ?, ?, ?, ?)
 	");
 
-	$prepared->execute([$flavor, $size, $frosting, $stock]);
+	$prepared->execute([$flavor, $size, $price, $frosting, $stock]);
 }
 
 // Redirect to cakes page
