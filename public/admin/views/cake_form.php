@@ -1,4 +1,4 @@
-<h2><?= $cake ? "I am edit cake" : "Add Cake" ?></h2>
+<h2><?= $cake ? "Edit cake" : "Add Cake" ?></h2>
 
 <form method="POST" action="actions/save_cake.php">
 	<input type="hidden" name="id" value="<?= $cake['CakeID'] ?? '' ?>">
