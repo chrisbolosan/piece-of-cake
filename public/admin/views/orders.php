@@ -8,7 +8,7 @@
 	<th>Date</th>
 </tr>
 
-<?php while ($row = $stmt->fetch(PDO::FETCH_ASSOC)): ?>
+<?php while ($row = $prepared->fetch(PDO::FETCH_ASSOC)): ?>
 <tr>
 	<td><?= $row['OrderID'] ?></td>
 	<td><?= $row['Name'] ?></td>
