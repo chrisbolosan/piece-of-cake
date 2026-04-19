@@ -1,3 +1,4 @@
+<?php die("LAYOUT LOADED"); ?>
 <!DOCTYPE html>
 <html>
 <head>

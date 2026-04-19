@@ -1,4 +1,3 @@
-<?php die("HOME VIEW LOADED"); ?>
 <h1>GP Store Cake Demo Homepage</h1>
 
 <div class="video-container">
