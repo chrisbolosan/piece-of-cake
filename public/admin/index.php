@@ -1,68 +1,18 @@
 <?php
-require_once __DIR__ . '/../includes/config.php';
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-$status = "DB connected";
+$page = $_GET['page'] ?? dashboard;
 
-try {
-	$pdo->query("SELECT 1");
-} catch (PDOException $e) {
-	$status = "connection failed";
+
+switch($page) {
+	
+	case 'cakes':
+		require 'controllers/cakes.php';
+		break;
+	case 'orders':
+		require 'controllers/orders.php';
+		break;
+	default:
+		require 'controllers/dashboard.php'; 
 }
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>GP Store Admin Panel</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #222;
-            color: #fff;
-            padding: 15px;
-            text-align: center;
-        }
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            margin-top: 0;
-        }
-        .status {
-            padding: 10px;
-            border-radius: 5px;
-            background: #e8f5e9;
-            margin-bottom: 20px;
-        }
-
-    </style>
-</head>
-<body>
-
-	<header>
-		<h1>GP Store Admin Panel</h1>
-	</header>
-
-	<main>
-		<div class="status">
-			<strong>Database Status:</strong> <?php echo htmlspecialchars($status); ?>
-		</div>
-
-			<h2>Admin Dashboard</h2>
-			<p>Admin panel here</p>
-		</div>
-	</main>
-
-</body>
-</html>
