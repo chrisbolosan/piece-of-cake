@@ -13,6 +13,7 @@
 		<a href="?page=products">All Cakes</a>
 		<a href="?page=product">Cake</a>
 		<a href="?page=cart">Cart</a>
+		<a href="?page=billing">Billing</a>
 	</nav>
 </header>
 
