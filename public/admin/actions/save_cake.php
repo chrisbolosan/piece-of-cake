@@ -18,7 +18,7 @@ if ($id) {
 	SET Flavor=?, Size=?, BasePrice=?, Frosting=?, NumInStock=?
 	WHERE CakeID=?	
 	");
-	$prepared->execute([$flavor, $size, $frosting, $stock, $id]);
+	$prepared->execute([$flavor, $size, $price, $frosting, $stock, $id]);
 } else {
 
 	// insert			
