@@ -1,4 +1,10 @@
 <?php
+// ============================================
+// SIMPLE ROUTER
+// Purpose: This main router maps URL query string to controllers pages
+// example: ?page=home -> controllers/home.php
+// ============================================
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
@@ -25,7 +31,15 @@ switch($page) {
 		require 'controllers/billing.php';
 		break;
 
+	// ========================================
+	// TODO: Addd future routes here
+	// - payment
+	// - admin panel
+	// - etc
+	// ========================================	
+
 	default:
+		// Fallback route
 		require 'controllers/home.php';
 }
 ?>

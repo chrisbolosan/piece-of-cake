@@ -1,4 +1,12 @@
 <?php
+// ============================================
+// CART PAGE CONTROLLER
+// Purpose: Display storefront fullcartpage
+//TODO: Handle session based shopping car. Add, remove, update cart logic
+//Documentation to understand session: https://www.php.net/manual/en/function.session-start.php
+// ============================================
+
+
 //cookie session
 session_start();
 

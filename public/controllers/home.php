@@ -1,10 +1,14 @@
 <?php
+// ============================================
+// HOMEPAGE CONTROLLER
+// Purpose: Display storefront homepage
+// ============================================
 
-// load data
+// Allow query to database 
 require_once __DIR__ . '/../includes/config.php';
 
-// views to render
+// View to render
 $view = __DIR__ . '/../views/home.php';
 
-//load lyout
+// Load lyout wrapper
 include __DIR__ . '/../views/layout.php';
