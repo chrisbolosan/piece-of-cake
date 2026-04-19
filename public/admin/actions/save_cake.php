@@ -1,4 +1,6 @@
 <?php
+var_dump($_POST);
+exit;
 require_once '../../includes/config.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -6,7 +8,7 @@ error_reporting(E_ALL);
 // Form variables admin/views/cake_form.php
 $id = $_POST['id'] ?? null;
 $flavor = $_POST['flavor'];
-$size = $_POST['Size'];
+$size = $_POST['size'];
 $price = $_POST['price'];
 $frosting = $_POST['frosting'];
 $stock = $_POST['stock'];
