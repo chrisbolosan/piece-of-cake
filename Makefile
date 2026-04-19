@@ -2,8 +2,8 @@
 # DATABASE CONFIG (change to your own environment)
 # ============================================
 
-DB_NAME ?= gp_store
-DB_USER ?= root
+DB_NAME ?= z1405381 
+DB_USER ?= root 
 DB_PASS ?=
 
 setup:
