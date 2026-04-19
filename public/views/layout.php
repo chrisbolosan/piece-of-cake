@@ -10,7 +10,8 @@
 	<h1>Piece of Cake</h1>
 	<nav>
 		<a href="?page=home">Home</a>
-		<a href="?page=products">Cakes</a>
+		<a href="?page=products">All Cakes</a>
+		<a href="?page=product">Cake</a>
 		<a href="?page=cart">Cart</a>
 	</nav>
 </header>
