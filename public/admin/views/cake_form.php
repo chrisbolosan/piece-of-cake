@@ -1,8 +1,5 @@
 <h2><?= $cake ? "I am edit cake" : "Add Cake" ?></h2>
 
-// Form actions
-// https://www.php.net/manual/en/tutorial.forms.php
-
 <form method="POST" action="actions/save_cake.php">
 	<input type="hidden" name="id" value="<?= $cake['CakeID'] ?? '' ?>">
 
