@@ -1,6 +1,4 @@
 <?php
-var_dump($_POST);
-exit;
 require_once '../../includes/config.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
