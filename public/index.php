@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 $page = $_GET['page'] ?? 'home';
 
 switch($page) {

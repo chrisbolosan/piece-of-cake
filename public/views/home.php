@@ -1,10 +1,4 @@
-<?php
-require_once __DIR__ . '/../includes/config.php';
-?>
-
-$view = 'views/home.php';
-include 'views/layout.php';
-
+<?php die("HOME VIEW LOADED"); ?>
 <h1>GP Store Cake Demo Homepage</h1>
 
 <div class="video-container">

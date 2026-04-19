@@ -14,6 +14,7 @@
 </header>
 
 <main>
+	
 	<?php include($view); ?>
 </main>
 
