@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 // Form variables admin/views/cake_form.php
 $id = $_POST['id'] ?? null;
 $flavor = $_POST['flavor'];
-$size = $_POST['size'];
+$size = $_POST['Size'];
 $price = $_POST['price'];
 $frosting = $_POST['frosting'];
 $stock = $_POST['stock'];
