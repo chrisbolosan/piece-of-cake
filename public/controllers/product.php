@@ -1,12 +1,13 @@
 <?php
 require_once __DIR__ . '/../includes/config.php';
-
+//grab ID
 $ID = $_GET['id'] ?? 0;
 
-$prepared = $pdo->query("SELECT * FROM CAKE WHERE CakeID = ?");
+$prepared = $pdo->prepare("SELECT * FROM CAKE WHERE CakeID = ?");
 $prepared->execute([$id]);
 
-$cake = $stmt->fetch(PDO::FETCH_ASSOC);
+//fetch cake data
+$cake = $prepared->fetch(PDO::FETCH_ASSOC);
 
-$view = __DIR__ . '/../views/products.php';
+$view = __DIR__ . '/../views/product.php';
 include __DIR__ . '/../views/layout.php';
