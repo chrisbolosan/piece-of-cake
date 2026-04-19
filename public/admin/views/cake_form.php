@@ -1,4 +1,4 @@
-<h2><?= ?cake ? "I am edit cake" : "Add Cake" ?></h2>
+<h2><?= $cake ? "I am edit cake" : "Add Cake" ?></h2>
 
 // Form actions
 // https://www.php.net/manual/en/tutorial.forms.php
