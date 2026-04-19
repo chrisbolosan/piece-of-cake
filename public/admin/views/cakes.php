@@ -19,7 +19,7 @@
 	<td><?= $row['Size'] ?></td>
 	<td>$<?= $row['BasePrice'] ?></td>
 	<td><?= $row['NumInStock'] ?></td>
-	<td>>
+	<td>
 		<a href="?page=cake_form&id=<?= $row['CakeID'] ?>">Edit</a>
 		<a href="actions/delete_cake.php?id=<?= $row['CakeID'] ?>">Delete</a>
 	</td>
