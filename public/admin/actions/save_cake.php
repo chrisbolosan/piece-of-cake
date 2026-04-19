@@ -25,7 +25,8 @@ if ($id) {
 
 	// insert			
 	$prepared = $pdo->prepare("
-		INSERT INTO CAKE (Flavor, Size, BasePrice, Frosting, NumInStock
+		INSERT INTO CAKE (Flavor, Size, BasePrice, Frosting, NumInStock) 
+		VALUES (?, ?, ?, ?, ?)
 	");
 
 	$prepared->execute([$flavor, $size, $frosting, $stock]);
