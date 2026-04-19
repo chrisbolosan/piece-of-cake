@@ -1,4 +1,3 @@
-//routing for pages
 <?php
 $page = $_GET['page'] ?? 'home';
 
