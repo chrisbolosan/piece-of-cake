@@ -11,7 +11,7 @@ if($id) {
 	$prepareID = $pdo->prepare("SELECT * FROM CAKE WHERE CakeID = ?");
 	$prepareID->execute([$id]);
 	// Fetch statement
-	$cake=$prepareID->fetch()PDO::FETCH_ASSOC;
+	$cake=$prepareID->fetch(PDO::FETCH_ASSOC);
 }
 
 // Cake form page view
