@@ -14,7 +14,6 @@
 </header>
 
 <main>
-	<?php var_dump($view); ?>	
 	<?php include($view); ?>
 </main>
 
