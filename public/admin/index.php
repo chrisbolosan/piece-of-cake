@@ -10,9 +10,24 @@ switch($page) {
 	case 'cakes':
 		require 'controllers/cakes.php';
 		break;
+	
+	//add edit forms
+	case 'cake_form':
+		require 'controllers/cake_form.php';
+		break;
+
 	case 'orders':
 		require 'controllers/orders.php';
 		break;
+
+	case 'order_view':
+		require 'controllers/order_view.php';
+		break;
+
+	case 'customers':
+		require 'controllers/customers.php';
+		break;
+	
 	default:
 		require 'controllers/dashboard.php'; 
 }
