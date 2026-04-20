@@ -9,7 +9,7 @@ $flavor = $_POST['flavor'];
 $size = $_POST['size'];
 $price = $_POST['price'];
 $frosting = $_POST['frosting'];
-$stock = $_POST['stock'];
+$stock = (int)$_POST['stock'];
 
 if ($id) {
 	//update

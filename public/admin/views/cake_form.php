@@ -16,11 +16,11 @@
 	<br>
 
 	<label>Frosting:</label>
-	<input type="text" name="frosting" value="<?= $cake['Frosting'] ?? ''?>">
+	<input type="" name="frosting" value="<?= $cake['Frosting'] ?? ''?>">
 	<br>
 
 	<label>Stock:</label>
-	<input type="text" name="stock" value="<?= $cake['NumInStock'] ?? 0?>">
+	<input type="number" name="stock" min="0" step="1" value="<?= $cake['NumInStock'] ?? 0?>">
 
 	<button type="submit">Save</button>
 </form>
