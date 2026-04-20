@@ -16,7 +16,7 @@
 	<br>
 
 	<label>Frosting:</label>
-	<input type="" name="frosting" value="<?= $cake['Frosting'] ?? ''?>" required>
+	<input type="text" name="frosting" value="<?= $cake['Frosting'] ?? ''?>" required>
 	<br>
 
 	<label>Stock:</label>

@@ -10,24 +10,25 @@ $size = $_POST['size'];
 $price = $_POST['price'];
 $frosting = $_POST['frosting'];
 $stock = (int)$_POST['stock'];
+$img = !empty($_POST['img']) ? $_POST['img'] : 'images/soon.jpeg';
 
 if ($id) {
 	//update
 	$prepared = $pdo->prepare("
 	UPDATE CAKE
-	SET Flavor=?, Size=?, BasePrice=?, Frosting=?, NumInStock=?
+	SET Flavor=?, Size=?, BasePrice=?, Frosting=?, NumInStock=?, Img=?
 	WHERE CakeID=?	
 	");
-	$prepared->execute([$flavor, $size, $price, $frosting, $stock, $id]);
+	$prepared->execute([$flavor, $size, $price, $frosting, $stock, $img, $id]);
 } else {
 
 	// insert			
 	$prepared = $pdo->prepare("
-		INSERT INTO CAKE (Flavor, Size, BasePrice, Frosting, NumInStock) 
-		VALUES (?, ?, ?, ?, ?)
+		INSERT INTO CAKE (Flavor, Size, BasePrice, Frosting, NumInStock, Img) 
+		VALUES (?, ?, ?, ?, ?, ?)
 	");
 
-	$prepared->execute([$flavor, $size, $price, $frosting, $stock]);
+	$prepared->execute([$flavor, $size, $price, $frosting, $stock, $img]);
 }
 
 // Redirect to cakes page
