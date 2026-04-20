@@ -2,7 +2,7 @@
 // ============================================
 // ALL PRODUCTS PAGE CONTROLLER
 // Purpose: Show all products in store
-TODO: Filtering, sorting, pagination
+//TODO: Filtering, sorting, pagination
 // ============================================
 
 // Allow query to database
