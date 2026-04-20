@@ -4,7 +4,7 @@
 	<input type="hidden" name="id" value="<?= $cake['CakeID'] ?? '' ?>" >
 
 	<label>Flavor:</label>
-	<input type="text" name="flavor" value="<?= $cake['Flavor'] ?? ''?>" required>
+	<input type="text" name="flavor" value="<?= htmlspecialchars($cake['Flavor'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
 	<br>
 
 	<label>Size:</label>
