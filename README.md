@@ -90,7 +90,7 @@ To keep development organized and avoid merge conflicts:
 https://students.cs.niu.edu/~z1405381/gp_store/public/?page=home
 
 🛠️ Admin Dashboard
-https://students.cs.niu.edu/~z1405381/gp_store/public/admin/
+https://students.cs.niu.edu/~z1405381/gp_store/public/admin/?page=dashboard
 
 🌐 Development ONLY Application Routes
 
@@ -98,4 +98,4 @@ https://students.cs.niu.edu/~z1405381/gp_store/public/admin/
 https://students.cs.niu.edu/~z1405381/gp_store_dev/public/?page=home
 
 🛠️ Admin Dashboard Dev
-https://students.cs.niu.edu/~z1405381/gp_store_dev/public/?page=admin
+https://students.cs.niu.edu/~z1405381/gp_store_dev/public/admin/?page=dashboard
