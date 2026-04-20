@@ -10,7 +10,7 @@ try {
 		foreach ($row as $key => $value) {
 			if (strtolower($key) === 'img') { 
 				echo "<p><strong>Image:</strong><br>";
-				echo "<img src='images/" . htmlspecialchars($value) . "' alt='Coming soon' style='width:100%; border-radius:5px;'>";
+				echo "<img src='" . htmlspecialchars($value) . "' alt='Cake coming soon' style='width:100%; height:auto; border-radius:5px;'>";
 				echo "</p>";
 			} else {
 				echo "<p><strong>" . htmlspecialchars(ucfirst($key)) . ":</strong> "
