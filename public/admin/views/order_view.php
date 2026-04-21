@@ -35,6 +35,13 @@
 		<option <?= $order['OrderStatus']=='Processing'?'selected':'' ?>>Processing</option>
 		<option <?= $order['OrderStatus']=='Completed'?'selected':'' ?>>Completed</option>
 	</select>
+	<br>
+<br>
 
+	<label>Delivery Date:</label>
+	<input type="datetime-local" name="delivery"
+		value="<?= $order['TimeDateDelivery'] ? date('Y-m-d\TH:i', strtotime($order['TimeDateDelivery'])) : '' ?>">
+	<br>
+	<br>
     <button type="submit">Update</button>
 </form>
