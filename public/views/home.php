@@ -16,10 +16,10 @@ try {
 		$stock   = (int)$row['NumInStock'];
 		$id      = (int)$row['CakeID'];
 
-		        echo "<div class='card'>";
+		    echo "<div class='card'>";
 
             //Image
-            echo "<img src='admin/images/$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>";
+            echo "<img src='images/$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>"; 
 
             //Name
             echo "<h3>$name</h3>";
@@ -27,8 +27,11 @@ try {
             //Price
             echo "<p><strong>Price: $$price</strong></p>";
 
+            //Size
+            echo "<p>Size: $size</p>;
+
             //Stock Count
-            echo "<p style='color;green';>In Stock: $stock</p>";
+            echo "<p style='color:green';>In Stock: $stock</p>";
 
             //Highlight if out of stock
             if ($stock <= 0) {
