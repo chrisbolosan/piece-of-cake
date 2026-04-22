@@ -34,7 +34,7 @@ try {
             if ($stock <= 0) {
                 echo "<p style='color:red;'><strong>Out of Stock</strong></p>";
             } else {
-                echo "<p style='color:green;'>In Stock ($stock left)'</p>"; 
+                echo "<p style='color:green;'>In Stock ($stock left)</p>"; 
             }
 
             //Link
