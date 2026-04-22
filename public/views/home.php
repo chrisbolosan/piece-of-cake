@@ -27,10 +27,7 @@ try {
             //Price
             echo "<p><strong>Price: $$price</strong></p> <small>($size)</small></p>";
 
-            //Stock Count
-            echo "<p>In Stock: $stock</p>";
-
-            //Highlight if out of stock
+            //Stock Count: Will highlight if out of stock
             if ($stock <= 0) {
                 echo "<p style='color:red;'><strong>Out of Stock</strong></p>";
             } else {
