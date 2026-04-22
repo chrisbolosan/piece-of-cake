@@ -4,6 +4,8 @@
 
 <table>
 	<tr>
+		<th></th>
+		<th></th>
 		<th>ID</th>
 		<th>Flavor</th>
 		<th>Size</th>
@@ -14,6 +16,8 @@
 
 <?php while ($row = $prepare->fetch(PDO::FETCH_ASSOC)): ?>
 <tr>
+	<td><img src="../<?= $row['Img'] ?>" width="60"></td>
+	<td></td>
 	<td><?= $row['CakeID'] ?></td>
 	<td><?= $row['Flavor'] ?></td>
 	<td><?= $row['Size'] ?></td>

@@ -14,7 +14,7 @@ try {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GP Store Admin Panel</title>
+    <title>Piece of Cake Admin Panel</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,7 +51,7 @@ try {
 <body>
 
 	<header>
-		<h1>GP Store Admin Panel</h1>
+		<h1>Piece of Cake Admin Panel</h1>
 	</header>
 
 	<main>
@@ -60,7 +60,9 @@ try {
 		</div>
 
 			<h2>Admin Dashboard</h2>
-			<p>Admin panel here</p>
+			<div>Total Orders: <?= $totalOrders ?></div>
+			<div>Processing: <?= $processing ?></div>
+			<div>Completed: <?= $completed ?></div>
 		</div>
 	</main>
 
