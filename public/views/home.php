@@ -25,7 +25,7 @@ try {
             echo "<h3>$name</h3>";
 
             //Price
-            echo "<p><strong>Price: $$price</strong></p>";
+            echo "<p><strong>Price: $$price</strong></p> <small>($size)</small></p>";
 
             //Size
             echo "<p>Size: $size</p>;
@@ -36,6 +36,8 @@ try {
             //Highlight if out of stock
             if ($stock <= 0) {
                 echo "<p style='color:red;'><strong>Out of Stock</strong></p>";
+            } else {
+                echo "<p style='color:green;'>In Stock ($stock left)</p>"; 
             }
 
             //Link
