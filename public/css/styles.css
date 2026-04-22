@@ -39,3 +39,14 @@ h1 {
     height: 100%;
     border: 0;
 }
+
+.promo {
+    background: #ffe0e0;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    max-width: 600px;
+    margin: 15px auto; /* centers the whole box horizontally */
+    border-radius: 8px;
+}

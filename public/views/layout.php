@@ -30,7 +30,7 @@
 <footer>
 	<div class="footer-content>
 		<div class="footer-left>
-			<img scr="imgaes/logo.jpg" alt="Piece of Cake Logo" class="footer-logo">
+			<img scr="images/logo.jpg" alt="Piece of Cake Logo" class="footer-logo">
 		</div>
 
 		<div class="footer-right>
