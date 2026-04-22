@@ -19,13 +19,15 @@ try {
 		        echo "<div class='card'>";
 
             //Image
-            echo "<img src='images/$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>";
+            echo "<div class= 'card-img-container'>"; 
+                echo "<img src='images/$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>";
+            echo "</div>"; 
 
             //Name
             echo "<h3>$name</h3>";
 
             //Price
-            echo "<p><strong>Price: $$price</strong></p>";
+            echo "<p><strong>Price: $$price</strong></p> <small>($size)</small></p>";
 
             //Stock Count
             echo "<p>In Stock: $stock</p>";
@@ -33,7 +35,8 @@ try {
             //Highlight if out of stock
             if ($stock <= 0) {
                 echo "<p style='color:red;'><strong>Out of Stock</strong></p>";
-            }
+            } else {
+                echo "p style='color:green;'>In Stock ($stock left)'</p>"
 
             //Link
             echo "<a href='index.php?page=product&id=$id'>View Details</a>";
