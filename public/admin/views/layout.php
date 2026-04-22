@@ -32,19 +32,49 @@
 	    background: #e8f5e9;
 	    margin-bottom: 20px;
 	}
+	/* === SIDEBAR ======= */
+
+	.sidebar {
+	    width: 250px;
+	    background: #2c3e50;
+	    color: #ecf0f1;
+	    padding: 20px 0;
+	    position: fixed;
+	    height: 100vh;
+	    overflow-y: auto;
+	    z-index: 1000;
+	}
+	.sidebar-menu {
+	    list-style: none;
+	    padding: 20px 0;
+	}
+
+	.sidebar-menu li {
+	    margin: 5px 0;
+	}
+
+	.sidebar-menu a {
+	    display: flex;
+	    align-items: center;
+	    gap: 12px;
+	    padding: 12px 20px;
+	    color: #bdc3c7;
+	    text-decoration: none;
+	    transition: all 0.3s;
+	    font-size: 15px;
+	}
+
+	/* === MAIN CONTAINER ======= */
 	</style>
 </head>
 
 <body>
-<!-- header -->
 <header>
 	<h1>Piece of Cake Admin Panel</h1>
 </header>
 
-<!-- sidebar  -->
 <aside class="sidebar">
-	I am new sidebar
-	<div class="sidebar">
+	<div class="">
 		logo here admin	
 		
 		<h2> Admin Piece of Cake Store </h2>
@@ -58,8 +88,10 @@
 	</ul>
 </aside>
 
+
 <div class="main">
 	<?php include($view); ?>
 </div>
 </body>
 </html>
+
