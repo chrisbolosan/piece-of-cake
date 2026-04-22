@@ -16,7 +16,7 @@ try {
 		$stock   = (int)$row['NumInStock'];
 		$id      = (int)$row['CakeID'];
 
-		        echo "<div class='card'>";
+		echo "<div class='card'>";
 
             //Image
                 echo "<img src='images/$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>";
@@ -35,6 +35,7 @@ try {
                 echo "<p style='color:red;'><strong>Out of Stock</strong></p>";
             } else {
                 echo "p style='color:green;'>In Stock ($stock left)'</p>"
+            }
 
             //Link
             echo "<a href='index.php?page=product&id=$id'>View Details</a>";
