@@ -2,10 +2,15 @@
 require_once __DIR__ . '/../../includes/config.php';
 $id = $_GET['id'];
 
-$order = $pdo->prepare("
-	SELECT * FROM ORDERS WHERE OrderID = ?
+$results = $pdo->prepare("
+	SELECT O.*, C.Name, C.Email, D.StreetAddress, D.City, D.State, D.ZIP
+	FROM ORDERS O
+	JOIN CUSTOMER C ON O.CustomerID = C.CustomerID
+	JOIN DESTINATION D ON O.AddressID = D.AddressID
+	WHERE O.OrderID = ?
 ");
-$order->execute([$id]);
+$results->execute([$id]);
+$order = $results->fetch(PDO::FETCH_ASSOC);
 
 $items = $pdo->prepare("
 	SELECT C.Flavor, C.Size, OI.Quantity, OI.UserMessage
