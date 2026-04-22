@@ -3,13 +3,15 @@ require_once '../../includes/config.php';
 
 $id = $_POST['order_id'];
 $status = $_POST['status'];
+$delivery = $_POST['delivery'] ?: null;
+$notes = $_POST['notes'];
 
 $prepared = $pdo->prepare("
-	UPDATE ORDERS SET OrderStatus=? WHERE OrderID=?
+	UPDATE ORDERS SET OrderStatus=?, TimeDateDelivery = ?, Notes = ? WHERE OrderID=?
 ");
 
-$prepared->execute([$status, $id]);
+$prepared->execute([$status, $delivery, $notes, $id]);
 
-// Redirect
-header("Location: ../?page=orders");
+// Redirect to specific order id
+header("Location: ../?page=order_view&id=" . $id);
 exit;
