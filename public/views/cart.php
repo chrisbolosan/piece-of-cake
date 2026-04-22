@@ -1,6 +1,4 @@
 <?php
-session_start();
-require 'config.php';
 
 $action = $_GET['action'] ?? 'view';
 
