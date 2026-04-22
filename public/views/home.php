@@ -19,9 +19,7 @@ try {
 		        echo "<div class='card'>";
 
             //Image
-            echo "<div class= 'card-img-container'>"; 
                 echo "<img src='images/$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>";
-            echo "</div>"; 
 
             //Name
             echo "<h3>$name</h3>";
