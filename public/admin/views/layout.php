@@ -36,17 +36,27 @@
 </head>
 
 <body>
+<!-- header -->
 <header>
 	<h1>Piece of Cake Admin Panel</h1>
 </header>
 
-
-<div class="sidebar">
-	<h2> Admin Piece of Cake Store </h2>
-	<a href="?page=dashboard">Dashboard</a>
-	<a href="?page=cakes">Cakes</a>
-	<a href="?page=orders">Orders</a>
-</div>
+<!-- sidebar  -->
+<aside class="sidebar">
+	I am new sidebar
+	<div class="sidebar">
+		logo here admin	
+		
+		<h2> Admin Piece of Cake Store </h2>
+		</div>
+	<ul class="sidebar-menu">
+		<li><a href="?page=dashboard">Dashboard</a></li>
+		<li><a href="?page=cakes">Cakes</a></li>
+		<li><a href="?page=orders">Orders</a></li>
+		<li><a href="?page=customers.php">Customers</a></li>
+		<li><a href="?page=payments">Payments</a></li>
+	</ul>
+</aside>
 
 <div class="main">
 	<?php include($view); ?>
