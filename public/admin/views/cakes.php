@@ -27,9 +27,6 @@
 		<a href="?page=cake_form&id=<?= $row['CakeID'] ?>">Edit</a>
 		<a href="actions/delete_cake.php?id=<?= $row['CakeID'] ?>">Delete</a>
 	</td>
-	<td>
-		<img src="../<?= $row['Img'] ?>" width="60">
-	</td>
 </tr>
 <?php endwhile; ?>
 </table>
