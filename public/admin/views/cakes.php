@@ -4,6 +4,8 @@
 
 <table>
 	<tr>
+		<th></th>
+		<th></th>
 		<th>ID</th>
 		<th>Flavor</th>
 		<th>Size</th>
@@ -14,6 +16,8 @@
 
 <?php while ($row = $prepare->fetch(PDO::FETCH_ASSOC)): ?>
 <tr>
+	<td><img src="../<?= $row['Img'] ?>" width="60"></td>
+	<td></td>
 	<td><?= $row['CakeID'] ?></td>
 	<td><?= $row['Flavor'] ?></td>
 	<td><?= $row['Size'] ?></td>
@@ -22,6 +26,9 @@
 	<td>
 		<a href="?page=cake_form&id=<?= $row['CakeID'] ?>">Edit</a>
 		<a href="actions/delete_cake.php?id=<?= $row['CakeID'] ?>">Delete</a>
+	</td>
+	<td>
+		<img src="../<?= $row['Img'] ?>" width="60">
 	</td>
 </tr>
 <?php endwhile; ?>
