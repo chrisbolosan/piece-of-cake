@@ -7,6 +7,11 @@
 </form>
 
 <?php if ($order): ?>
-	<p>order found</p>
+	<p><strong>Status:</strong><?= $order['OrderStatus'] ?></p>
+	<p><strong>Tracking:</strong><?= $order['TrackingNumber'] ?></p>
+	<p><strong>Placed:</strong><?= $order['TimeDatePlaced'] ?></p>
+	<p><strong>Delivery:</strong><?= $order['TimeDateDelivery']?? 'TBD' ?></p>
+
+	
 <?php endif; ?>
 
