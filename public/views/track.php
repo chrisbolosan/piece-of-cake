@@ -8,5 +8,5 @@
 
 <?php if ($order): ?>
 	<p>order found</p>
-<?php endif: ?>
+<?php endif; ?>
 
