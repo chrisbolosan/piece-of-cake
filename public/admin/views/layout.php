@@ -56,6 +56,17 @@
 		font-size: 15px;
 	}
 
+	.sidebar-menu a:hover {
+		background: rgba(231, 76, 60, 0.8);
+		color: #fff;	
+		
+	}
+	
+	.sidebar-menu a.active {
+		background: #e74c3c;
+		color: #fff;
+		border-left: 4px solid #fff;
+	}
 	/* === MAIN CONTAINER ======= */
 	.main-content {
 		padding; 100px 50px 0 0;
@@ -77,11 +88,11 @@
 			<h2>Piece of Cake Admin </h2>
 			</div>
 		<ul class="sidebar-menu">
-			<li><a href="?page=dashboard">Dashboard</a></li>
-			<li><a href="?page=cakes">Cakes</a></li>
-			<li><a href="?page=orders">Orders</a></li>
-			<li><a href="?page=customers.php">Customers</a></li>
-			<li><a href="?page=payments">Payments</a></li>
+			<li><a href="?page=dashboard" class="<?= ($_GET['page'] ?? 'dashboard') == 'dashboard' ? 'active' : '' ?>">Dashboard</a></li>
+			<li><a href="?page=cakes" class="<?= ($_GET['page'] ?? '') == 'cakes' ? 'active' : '' ?>">🎂 Cakes</a></li>
+			<li><a href="?page=orders" class="<?= ($_GET['page'] ?? '') == 'orders' ? 'active' : '' ?>">📦 Orders</a></li>
+			<li><a href="?page=customers" class="<?= ($_GET['page'] ?? '') == 'customers' ? 'active' : '' ?>">👥 Customers</a></li>
+			<li><a href="?page=payments" class="<?= ($_GET['page'] ?? '') == 'payments' ? 'active' : '' ?>">💳 Payments</a></li>	
 		</ul>
 	</aside>
 
