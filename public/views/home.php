@@ -1,5 +1,5 @@
 <div class="hero">
-    <h1> Piece of Cake</h1>?
+    <h1> Piece of Cake</h1>
 </div>
 
 <div class="grid">

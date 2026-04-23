@@ -8,7 +8,7 @@
 
 <header>
 	<h1>Piece of Cake</h1>
-	<img scr="header.jpg" alt="Piece of Cake Banner" class="header-img">
+	<img src="header.jpg" alt="Piece of Cake Banner" class="header-img">
 	<h1>Piece of Cake</h1>
 
 	<nav>
@@ -28,12 +28,12 @@
 </main>
 
 <footer>
-	<div class="footer-content>
-		<div class="footer-left>
-			<img scr="logo.jpg" alt="Piece of Cake Logo" class="footer-logo">
+	<div class="footer-content">
+		<div class="footer-left">
+			<img src="logo.jpg" alt="Piece of Cake Logo" class="footer-logo">
 		</div>
 
-		<div class="footer-right>
+		<div class="footer-right">
 			<h3>Contact Information<h3>
 			<p>Email: pieceofcake@gmail.com</p>
 			<p>Phone: (123) 951-1888</p>
