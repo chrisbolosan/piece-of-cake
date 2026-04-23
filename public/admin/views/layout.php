@@ -100,7 +100,6 @@
 		color: #fff;
 		border-left: 4px solid #fff;
 	}
-
 	/* === MAIN CONTAINER ======= */
 	.main-content {
 		padding; 100px 50px 0 0;
@@ -109,6 +108,27 @@
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
+	}
+
+	.content-area {
+		padding: 30px;
+	}
+
+	/* === DASHBOARD STATS CARDS  ======= */
+	.stats-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+		gap: 20px;
+		margin-bottom: 30px;
+	}
+
+	.stat-card {
+		background: white;
+		padding: 25px;
+		border-radius: 10px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 	</style>
 </head>
