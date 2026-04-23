@@ -1,34 +1,39 @@
-<h1>Piece of Cake</h1>
-
 <div class="grid">
 <?php
 try {
 	$prepared = $pdo->query("SELECT * FROM CAKE");
 
 	while ($row = $prepared->fetch(PDO::FETCH_ASSOC)) {
+
 		$name    = htmlspecialchars($row['Flavor'] . " Cake");
-		$price   = htmlspecialchars($row['BasePrice']);
+		$price   = number_format((float)$row['BasePrice'], 2);
 		$img     = htmlspecialchars($row['Img']); 
 		$size    = htmlspecialchars($row['Size']);
 		$stock   = (int)$row['NumInStock'];
-		$id      = htmlspecialchars($row['CakeID']);
+		$id      = (int)$row['CakeID'];
 
-		echo "<div class='card'>";
-			echo "<div class='card-img-container'>";
-				echo "<img src='images/$img' alt='$name' style='width:100%; border-radius:5px;'>";
-			echo "</div>";
+		    echo "<div class='card'>";
 
-			echo "<h3>$name</h3>";
-			echo "<p class='price'><strong>$$price</strong> <small>($size)</small></p>";
+            //Image
+            echo "<img src='$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>"; 
 
-			if ($stock > 0) {
-				echo "<p style='color: green;'>In Stock ($stock left)</p>";
-			} else {
-				echo "<p style='color: red;'>Out of Stock</p>";
-			}
+            //Name
+            echo "<h3>$name</h3>";
 
-			echo "<a href='index.php?page=product&id=$id' class='button'>View Details</a>";
-		echo "</div>";
+            //Price
+            echo "<p><strong>Price: $$price</strong></p> <small>($size)</small></p>";
+
+            //Highlight if out of stock
+            if ($stock <= 0) {
+                echo "<p style='color:red;'><strong>Out of Stock</strong></p>";
+            } else {
+                echo "<p style='color:green;'>In Stock ($stock left)</p>"; 
+            }
+
+            //Link
+            echo "<a href='index.php?page=product&id=$id'>View Details</a>";
+
+        echo "</div>";
 	}
 } catch (PDOException $e) {
 	echo "<p>Error: " . htmlspecialchars($e->getMessage()) . "</p>";
