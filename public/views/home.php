@@ -1,7 +1,3 @@
-<div class="hero">
-    <h1> Piece of Cake</h1>
-</div>
-
 <div class="grid">
 <?php
 try {
@@ -26,12 +22,6 @@ try {
 
             //Price
             echo "<p><strong>Price: $$price</strong></p> <small>($size)</small></p>";
-
-            //Size
-            echo "<p>Size: $size</p>";
-
-            //Stock Count
-            echo "<p style='color:green';>In Stock: $stock</p>";
 
             //Highlight if out of stock
             if ($stock <= 0) {

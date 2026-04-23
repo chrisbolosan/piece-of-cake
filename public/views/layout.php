@@ -8,7 +8,7 @@
 
 <header>
 	<h1>Piece of Cake</h1>
-	<img src="header.jpg" alt="Piece of Cake Banner" class="header-img">
+	<img src="images/header.jpg" alt="Piece of Cake Banner" class="header-img">
 	<h1>Piece of Cake</h1>
 
 	<nav>
@@ -30,7 +30,7 @@
 <footer>
 	<div class="footer-content">
 		<div class="footer-left">
-			<img src="logo.jpg" alt="Piece of Cake Logo" class="footer-logo">
+			<img src="images/logo.jpg" alt="Piece of Cake Logo" class="footer-logo">
 		</div>
 
 		<div class="footer-right">

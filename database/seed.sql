@@ -25,11 +25,11 @@ INSERT INTO CUSTOMER (Name, Email, PhoneNum) VALUES
 
 -- CAKES
 INSERT INTO CAKE (Flavor, Size, BasePrice, Frosting, NumInStock, Img, AdminID) VALUES
-('Chocolate', '6-inch', 24.99, 'Chocolate Buttercream', 10, 'images/germancoconutcake.jpeg', 1),
-('Vanilla', '8-inch', 29.99, 'Vanilla Buttercream', 8, 'images/germancoconutcake.jpeg', 1),
-('Red Velvet', '6-inch', 27.99, 'Cream Cheese', 5, 'images/germancoconutcake.jpeg', 2),
-('Strawberry', '10-inch', 34.99, 'Whipped Cream', 6, 'images/germancoconutcake.jpeg', 2),
-('Carrot', '8-inch', 31.99, 'Cream Cheese', 4, 'images/germancoconutcake.jpeg', 1);
+('Chocolate', '6-inch', 24.99, 'Chocolate Buttercream', 10, 'images/ChocCake.jpeg', 1),
+('Vanilla', '8-inch', 29.99, 'Vanilla Buttercream', 8, 'images/VanillaCake.jpeg', 1),
+('Red Velvet', '6-inch', 27.99, 'Cream Cheese', 5, 'images/RedVelvet.jpeg', 2),
+('Strawberry', '10-inch', 34.99, 'Whipped Cream', 6, 'images/StrawbCake.jpeg', 2),
+('Carrot', '8-inch', 31.99, 'Cream Cheese', 4, 'images/CarrotCake.jpeg', 1);
 
 -- DESTINATION
 INSERT INTO DESTINATION (StreetAddress, AptNumber, ZIP, City, State) VALUES
