@@ -45,36 +45,36 @@ INSERT INTO PAYMENT (Method, Amount, PaymentStatus, CardholderName, CardLastFour
 
 -- ORDERS
 INSERT INTO ORDERS 
-(CustomerID, PaymentID, AddressID, AdminID, TimeDatePlaced, TimeDateDelivery, OrderStatus, Notes)
+(CustomerID, PaymentID, AddressID, AdminID, TimeDatePlaced, TimeDateDelivery, OrderStatus, TrackingNumber, Notes)
 VALUES
-(1,1,1,1,'2025-11-05 10:00:00','2025-11-06 14:00:00','Completed','birthday celebration'),
-(2,2,2,1,'2025-11-12 12:30:00','2025-11-13 15:00:00','Completed','office party'),
-(3,3,3,2,'2025-11-20 09:15:00','2025-11-21 13:00:00','Completed','family gathering'),
+(1,1,1,1,'2025-11-05 10:00:00','2025-11-06 14:00:00','Completed','TRK1001','birthday celebration'),
+(2,2,2,1,'2025-11-12 12:30:00','2025-11-13 15:00:00','Completed','TRK1002','office party'),
+(3,3,3,2,'2025-11-20 09:15:00','2025-11-21 13:00:00','Completed','TRK1003','family gathering'),
 
-(1,1,1,1,'2025-12-02 11:00:00','2025-12-03 16:00:00','Completed','oliday dessert'),
-(2,2,2,1,'2025-12-10 14:45:00','2025-12-11 17:00:00','Completed','work event'),
-(3,3,3,2,'2025-12-18 10:20:00','2025-12-19 12:00:00','Completed','xmas party'),
+(1,1,1,1,'2025-12-02 11:00:00','2025-12-03 16:00:00','Completed','TRK1004','oliday dessert'),
+(2,2,2,1,'2025-12-10 14:45:00','2025-12-11 17:00:00','Completed','TRK1005','work event'),
+(3,3,3,2,'2025-12-18 10:20:00','2025-12-19 12:00:00','Completed','TRK1006','xmas party'),
 
-(1,1,1,1,'2026-01-05 09:30:00','2026-01-06 14:00:00','Completed','new Year party'),
-(2,2,2,1,'2026-01-11 13:00:00','2026-01-12 15:00:00','Completed','birthday order'),
-(3,3,3,2,'2026-01-22 15:10:00','2026-01-23 18:00:00','Completed','celebration'),
+(1,1,1,1,'2026-01-05 09:30:00','2026-01-06 14:00:00','Completed','TRK1007','new Year party'),
+(2,2,2,1,'2026-01-11 13:00:00','2026-01-12 15:00:00','Completed','TRK1008','birthday order'),
+(3,3,3,2,'2026-01-22 15:10:00','2026-01-23 18:00:00','Completed','TRK1009','celebration'),
 
-(1,1,1,1,'2026-02-03 10:00:00','2026-02-04 13:00:00','Completed','small gathering'),
-(2,2,2,1,'2026-02-14 12:00:00','2026-02-15 16:00:00','Completed','valentines special'),
-(3,3,3,2,'2026-02-25 11:30:00','2026-02-26 14:00:00','Completed','anniversary'),
+(1,1,1,1,'2026-02-03 10:00:00','2026-02-04 13:00:00','Completed','TRK1010','small gathering'),
+(2,2,2,1,'2026-02-14 12:00:00','2026-02-15 16:00:00','Completed','TRK1011','valentines special'),
+(3,3,3,2,'2026-02-25 11:30:00','2026-02-26 14:00:00','Completed','TRK1012','anniversary'),
 
-(1,1,1,1,'2026-03-02 09:45:00','2026-03-03 13:00:00','Completed','office treat'),
-(2,2,2,1,'2026-03-10 14:10:00','2026-03-11 17:00:00','Completed','birthday cake'),
-(3,3,3,2,'2026-03-18 10:50:00','2026-03-19 12:30:00','Completed','event order'),
+(1,1,1,1,'2026-03-02 09:45:00','2026-03-03 13:00:00','Completed','TRK1013','office treat'),
+(2,2,2,1,'2026-03-10 14:10:00','2026-03-11 17:00:00','Completed','TRK1014','birthday cake'),
+(3,3,3,2,'2026-03-18 10:50:00','2026-03-19 12:30:00','Completed','TRK1015','event order'),
 
-(1,1,1,1,'2026-04-01 11:00:00','2026-04-02 15:00:00','Completed','spring event'),
-(2,2,2,1,'2026-04-08 13:30:00','2026-04-09 16:00:00','Completed','family party'),
-(3,3,3,2,'2026-04-15 09:20:00','2026-04-16 14:00:00','Processing','upcoming event'),
+(1,1,1,1,'2026-04-01 11:00:00','2026-04-02 15:00:00','Completed','TRK1016','spring event'),
+(2,2,2,1,'2026-04-08 13:30:00','2026-04-09 16:00:00','Completed','TRK1017','family party'),
+(3,3,3,2,'2026-04-15 09:20:00','2026-04-16 14:00:00','Processing','TRK1018','upcoming event'),
 
-(1,1,1,1,'2026-04-18 10:15:00','2026-04-19 13:00:00','Processing','rush order'),
-(2,2,2,1,'2026-04-19 12:40:00','2026-04-20 15:00:00','Processing','Weekend order'),
-(3,3,3,2,'2026-04-20 14:00:00','2026-04-21 16:00:00','Processing','pickup order'),
-(1,1,1,1,'2026-04-21 16:20:00','2026-04-22 18:00:00','Processing','last minute order');
+(1,1,1,1,'2026-04-18 10:15:00','2026-04-19 13:00:00','Processing','TRK1019','rush order'),
+(2,2,2,1,'2026-04-19 12:40:00','2026-04-20 15:00:00','Processing','TRK1020','Weekend order'),
+(3,3,3,2,'2026-04-20 14:00:00','2026-04-21 16:00:00','Processing','TRK1021','pickup order'),
+(1,1,1,1,'2026-04-21 16:20:00','2026-04-22 18:00:00','Processing','TRK1022','last minute order');
 -- ORDER ITEMS
 INSERT INTO ORDER_ITEM 
 (OrderID, CakeID, Quantity, UserImg, UserMessage)
