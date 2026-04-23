@@ -38,6 +38,10 @@ switch($page) {
 	// - etc
 	// ========================================	
 
+	case 'track':
+		require 'controllers/track.php';
+		break;
+
 	default:
 		// Fallback route
 		require 'controllers/home.php';
