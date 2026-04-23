@@ -30,13 +30,13 @@
 <footer>
 	<div class="footer-content">
 		<div class="footer-left">
-			<img src="images/logo.jpg" alt="Piece of Cake Logo" class="footer-logo">
+			<img src="images/logo.png" alt="Piece of Cake Logo" class="footer-logo">
 		</div>
 
 		<div class="footer-right">
-			<h3>Contact Information<h3>
+			<h3><strong>Contact Information</strong><h3>
 			<p>Email: pieceofcake@gmail.com</p>
-			<p>Phone: (123) 951-1888</p>
+			<p>Phone: (630) 123-4567</p>
 		</div>
 	</div>
 </footer>
