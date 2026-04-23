@@ -5,7 +5,7 @@
 	<th>OrderID</th>
 	<th>Customer</th>
 	<th>Status</th>
-	<th>Date</th>
+	<th>Order Placed</th>
 	<th>Actions</th>
 
 </tr>
