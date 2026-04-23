@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			WHERE OI.OrderID = ?
 		");
 
-		$items->execute($order['Order.ID']);
+		$items->execute([$order['OrderID']]);
 	}
 }
 
