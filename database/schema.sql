@@ -126,6 +126,7 @@ CREATE TABLE ORDERS (
     TimeDatePlaced      DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
     TimeDateDelivery    DATETIME,
     OrderStatus         VARCHAR(50)     NOT NULL DEFAULT 'Processing',
+    TrackingNumber      VARCHAR(50),
     Notes               TEXT,
     FOREIGN KEY (CustomerID) REFERENCES CUSTOMER(CustomerID),
     FOREIGN KEY (PaymentID)  REFERENCES PAYMENT(PaymentID),
