@@ -130,6 +130,10 @@
 		justify-content: space-between;
 		align-items: center;
 	}
+	.stat-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+	}
 	</style>
 </head>
 
