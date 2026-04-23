@@ -36,6 +36,39 @@
 		overflow-y: auto;
 		z-index: 1000;
 	}
+
+	.sidebar-header {
+		padding: 0 20px 30px;
+		border-bottom: 1px solid rgba(255,255,255,0.1);
+	}
+	.sidebar-name {
+		font-size: 20px;
+		font-weight: 600;
+		color: #fff;
+		margin-bottom: 20px;
+	}
+
+	.user-info {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 10px;
+		background: rgba(255,255,255,0.05);
+		border-radius: 8px;
+	}
+
+	.user-avatar {
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: #3498db;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 600;
+		font-size: 14px;
+	}
+
 	.sidebar-menu {
 		list-style: none;
 		padding: 20px 0;
@@ -67,6 +100,7 @@
 		color: #fff;
 		border-left: 4px solid #fff;
 	}
+
 	/* === MAIN CONTAINER ======= */
 	.main-content {
 		padding; 100px 50px 0 0;
@@ -82,13 +116,17 @@
 <body>
 	<!--SIDEBAR -->
 	<aside class="sidebar">
-		<div class="">
-			logo here admin	
-			
-			<h2>Piece of Cake Admin </h2>
+		<div class="sidebar-header">
+			<div class="sidebar-name">🎂 Piece of Cake</div>
+			<div class="user-info">
+				<div class="user-avatar">MM</div>
+				<div>
+					<div style="font-size: 12px; color: grey;">Administrator</div>
+				</div>
 			</div>
+		</div>	
 		<ul class="sidebar-menu">
-			<li><a href="?page=dashboard" class="<?= ($_GET['page'] ?? 'dashboard') == 'dashboard' ? 'active' : '' ?>">Dashboard</a></li>
+			<li><a href="?page=dashboard" class="<?= ($_GET['page'] ?? 'dashboard') == 'dashboard' ? 'active' : '' ?>">🏠 Dashboard</a></li>
 			<li><a href="?page=cakes" class="<?= ($_GET['page'] ?? '') == 'cakes' ? 'active' : '' ?>">🎂 Cakes</a></li>
 			<li><a href="?page=orders" class="<?= ($_GET['page'] ?? '') == 'orders' ? 'active' : '' ?>">📦 Orders</a></li>
 			<li><a href="?page=customers" class="<?= ($_GET['page'] ?? '') == 'customers' ? 'active' : '' ?>">👥 Customers</a></li>
