@@ -19,7 +19,7 @@ try {
 		    echo "<div class='card'>";
 
             //Image
-            echo "<img src='images/$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>"; 
+            echo "<img src='$img' alt='$name' style='width:100%; height:200px; object-fit:cover;'>"; 
 
             //Name
             echo "<h3>$name</h3>";
@@ -28,7 +28,7 @@ try {
             echo "<p><strong>Price: $$price</strong></p> <small>($size)</small></p>";
 
             //Size
-            echo "<p>Size: $size</p>;
+            echo "<p>Size: $size</p>";
 
             //Stock Count
             echo "<p style='color:green';>In Stock: $stock</p>";
