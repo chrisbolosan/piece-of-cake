@@ -20,16 +20,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	$order = $prepared->fetch(PDO::FETCH_ASSOC);
 	
-	$totalSpentPrepared = $pdo->prepare("
-		SELECT SUM(P.Amount)
-		FROM ORDERS O
-		JOIN PAYMENT P ON O.PaymentID = P.PaymentID
-		WHERE O.CustomerID = ?
-	");
-
-	$totalSpentPrepared->execute([$order['CustomerID]]);
-	$totalSpent = $totalSpentPrepared->fetchColumn();
 	if ($order) {
+
+		$totalSpentPrepared = $pdo->prepare("
+			SELECT SUM(P.Amount)
+			FROM ORDERS O
+			JOIN PAYMENT P ON O.PaymentID = P.PaymentID
+			WHERE O.CustomerID = ?
+		");
+
+		$totalSpentPrepared->execute([$order['CustomerID']]);
+		$totalSpent = $totalSpentPrepared->fetchColumn();
+
 		$items = $pdo->prepare("
 			SELECT C.Flavor, C.Size, OI.Quantity
 			FROM ORDER_ITEM OI
