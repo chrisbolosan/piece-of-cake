@@ -12,7 +12,8 @@
 	<p><strong>Tracking:</strong><?= $order['TrackingNumber'] ?></p>
 	<p><strong>Placed:</strong><?= $order['TimeDatePlaced'] ?></p>
 	<p><strong>Delivery:</strong><?= $order['TimeDateDelivery']?? 'TBD' ?></p>
-
+	<p><strong>Order Total:</strong> $<?= $order['Amount']?></p>
+	<p><strong>Total Spent:</strong> $<?= $totalSpent ?></p>
 
 	<h4> Customer Name</h4>
 	<p><?= $order['Name'] ?> </p>
