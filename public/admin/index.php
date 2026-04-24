@@ -11,7 +11,10 @@ switch($page) {
 		require 'controllers/cakes.php';
 		break;
 	
-	//add edit forms
+	case 'dashboard':
+		require 'controllers/dashboard.php';
+		break;
+
 	case 'cake_form':
 		require 'controllers/cake_form.php';
 		break;
@@ -37,5 +40,5 @@ switch($page) {
 		break;
 	
 	default:
-		require 'controllers/dashboard.php'; 
+		require 'controllers/404.php'; 
 }
