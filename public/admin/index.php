@@ -28,6 +28,10 @@ switch($page) {
 		require 'controllers/order_view.php';
 		break;
 
+	case 'outstanding':
+		require 'controllers/outstanding.php';
+		break;
+
 	case 'payments':
 		require 'controllers/payments.php';
 		break;
