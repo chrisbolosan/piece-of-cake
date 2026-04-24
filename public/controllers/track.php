@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		JOIN CUSTOMER C ON O.CustomerID = C.CustomerID
 		JOIN DESTINATION D ON O.AddressID = D.AddressID
 		JOIN PAYMENT P ON O.PaymentID = P.PaymentID
-		WHERE O.TrackingNumber =? OR O.OrderID = ?
+		WHERE O.TrackingNumber =?
 ");
 	$prepared->execute([$tracking, $tracking]);
 
