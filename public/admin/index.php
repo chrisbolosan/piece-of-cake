@@ -37,5 +37,5 @@ switch($page) {
 		break;
 	
 	default:
-		require 'controllers/dashboard.php'; 
+		require 'controllers/404.php'; 
 }

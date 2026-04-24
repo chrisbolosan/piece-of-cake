@@ -43,7 +43,6 @@ switch($page) {
 		break;
 
 	default:
-		// Fallback route
-		require 'controllers/home.php';
+		require 'controllers/404.php';
 }
 ?>
