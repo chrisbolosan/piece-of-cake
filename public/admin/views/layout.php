@@ -155,6 +155,7 @@
 			<li><a href="?page=orders" class="<?= ($_GET['page'] ?? '') == 'orders' ? 'active' : '' ?>">📦 Orders</a></li>
 			<li><a href="?page=customers" class="<?= ($_GET['page'] ?? '') == 'customers' ? 'active' : '' ?>">👥 Customers</a></li>
 			<li><a href="?page=payments" class="<?= ($_GET['page'] ?? '') == 'payments' ? 'active' : '' ?>">💳 Payments</a></li>	
+			<li><a href="?page=outstanding" class="<?= ($_GET['page'] ?? '') == 'outstanding' ? 'active' : '' ?>">Outstanding</a></li>	
 		</ul>
 	</aside>
 
