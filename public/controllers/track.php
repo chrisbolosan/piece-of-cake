@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		JOIN PAYMENT P ON O.PaymentID = P.PaymentID
 		WHERE O.TrackingNumber =?
 ");
-	$prepared->execute([$tracking, $tracking]);
+	$prepared->execute([$tracking]);
 
 	$order = $prepared->fetch(PDO::FETCH_ASSOC);
 	
