@@ -31,9 +31,9 @@
 	<h4> Items</h4>
 	<?php while ($item = $items->fetch(PDO::FETCH_ASSOC)): ?>
 		<p>
-		<?= $order['Flavor'] ?>
-		(<?= $order['Size'] ?>)
-		 x <?= $order['Quantity'] ?>
+			<?= $item['Flavor'] ?>
+			(<?= $item['Size'] ?>)
+			 x <?= $item['Quantity'] ?>
 		</p>
 	<?php endwhile; ?>
 
