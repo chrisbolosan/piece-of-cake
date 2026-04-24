@@ -11,6 +11,9 @@ error_reporting(E_ALL);
 $page = $_GET['page'] ?? 'home';
 
 switch($page) {
+	case 'home':
+		require 'controllers/home.php';
+		break;
 	case 'products':
 		require 'controllers/products.php';
 		break;
