@@ -22,9 +22,20 @@
 		<?= $order['StreetAddress'] ?>,
 		<?= $order['City'] ?>,
 		<?= $order['State'] ?>,
-		<?= $order['zip'] ?>,
+		<?= $order['ZIP'] ?>,
 	</p>
 
+	<h4> Customer Name</h4>
+	<p><?= $order['Name'] ?> </p>
+
+	<h4> Items</h4>
+	<?php while ($item = $items->fetch(PDO::FETCH_ASSOC)): ?>
+		<p>
+		<?= $order['Flavor'] ?>
+		(<?= $order['Size'] ?>)
+		 x <?= $order['Quantity'] ?>
+		</p>
+	<?php endwhile; ?>
 
 <?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'):?>
 	<p>order not found</p>	
