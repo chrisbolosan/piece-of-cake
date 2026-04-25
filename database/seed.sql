@@ -71,7 +71,7 @@ INSERT INTO PAYMENT (Method, Amount, PaymentStatus, CardholderName, CardLastFour
 ('Card', 59.99, 'Completed', 'Tony Stark', '4444');
 -- ORDERS
 INSERT INTO ORDERS 
-(CustomerID, PaymentID, AddressID, AdminID, TimeDatePlaced, TimeDateDelivery, OrderStatus, TrackingNumber, FullfillmentType, Notes)
+(CustomerID, PaymentID, AddressID, AdminID, TimeDatePlaced, TimeDateDelivery, OrderStatus, TrackingNumber, FulfillmentType, Notes)
 VALUES
 (1,1,1,1,'2025-11-05 10:00:00','2025-11-06 14:00:00','Delivered','TRK1001','Delivery','birthday celebration'),
 (2,2,2,1,'2025-11-12 12:30:00','2025-11-13 15:00:00','Delivered','TRK1002','Delivery','office party'),
