@@ -16,7 +16,7 @@ if ($type=='Pickup') {
 	$tracking == null;
 }
 
-if ($status === 'Delivery' && $status === 'Shipped' && empty($tracking)) {
+if ($type === 'Delivery' && $status === 'Shipped' && empty($tracking)) {
 
 	$tracking = 'TRK' . rand(10000,99999);
 }
