@@ -10,6 +10,16 @@
 	border-radius: 10px;
 	padding: 25px;
 }
+
+.track-form {
+	text-align: center;
+	margin-bottom: 25px;
+}
+
+.track-form button {
+	padding: 10px 20px;
+	cursor: pointer;
+}
 </style>
 
 <div class="track-container">
