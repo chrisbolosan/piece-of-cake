@@ -16,7 +16,7 @@ if (!isset($_GET['id'])){
 $ID = $_GET['id'] ?? 0;
 
 $stmt = $pdo->prepare("SELECT * FROM CAKE WHERE CakeID = ?");
-$stmt->execute([$id]);
+$stmt->execute([$cakeID]);
 $cake = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if(!$cake){
@@ -27,12 +27,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$notes = htmlspecialchars($_POST['notes']);
 
 	$_SESSION['cart'][] = [
-		'id' => $cake['CakeID'],
-        'flavor' => $cake['Flavor'],
-        'size' => $cake['Size'],
-        'price' => $cake['BasePrice'],
-        'img' => $cake['Img'],
-        'notes' => $notes
+		'CakeID' => $cake['CakeID'],
+        'Flavor' => $cake['Flavor'],
+        'Size' => $cake['Size'],
+        'BasePrice' => $cake['BasePrice'],
+        'Img' => $cake['Img'],
+        'SpecialNotes' => $notes
 	];
 
 	header("Location: index.php?page=cart");
