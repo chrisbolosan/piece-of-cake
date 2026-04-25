@@ -38,7 +38,6 @@
 	<option <?= $order['OrderStatus']=='Processing'?'selected':'' ?>>Processing</option>
 	<option <?= $order['OrderStatus']=='Ready for Pickup'?'selected':'' ?>>Ready for Pickup</option>
 	<option <?= $order['OrderStatus']=='Delivered'?'selected':'' ?>>Delivered</option>
-
 <?php else: ?>
 
 	<option <?= $order['OrderStatus']=='Processing'?'selected':'' ?>>Processing</option>
@@ -56,7 +55,7 @@
 	<br>
 
 	<label>Delivery Date:</label>
-
+	<input type="datetime-local" name="delivery"
 		value="<?= $order['TimeDateDelivery'] ? date('Y-m-d\TH:i', strtotime($order['TimeDateDelivery'])) : '' ?>">
 	<br>
 	<br>
