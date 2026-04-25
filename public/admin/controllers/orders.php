@@ -6,6 +6,8 @@ $prepared = $pdo->query("
 	SELECT O.OrderID, C.Name, O.OrderStatus, O.TimeDatePlaced, O.Notes
 	FROM ORDERS O
 	JOIN CUSTOMER C ON O.CustomerID = C.CustomerID 
+	WHERE O.OrderStatus = 'Processing'
+	ORDER BY O.TimeDatePlaced ASC
 ");
 
 $view = __DIR__ . '/../views/orders.php';
