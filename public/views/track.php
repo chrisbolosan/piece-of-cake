@@ -2,7 +2,7 @@
 
 <form method="POST">
 	<label>Tracking Number:</label>
-	<input type="text" name="tracking" required>
+	<input type="text" name="tracking" maxlength=8 placeholder="Enter Tracking ID" required>
 	<button type="submit">Track</button>
 </form>
 
