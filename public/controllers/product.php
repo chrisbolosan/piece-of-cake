@@ -8,7 +8,7 @@ sessionn_start();
 // Connect to database
 require_once __DIR__ . '/../includes/config.php';
 
-if (!isset($_GET['id')){
+if (!isset($_GET['id'])){
 	die("No product selected.");
 }
 
