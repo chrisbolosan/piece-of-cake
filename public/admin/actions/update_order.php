@@ -20,7 +20,7 @@ if ($type =='Delivery' && $status === 'Shipped' && empty($tracking)) {
 	die("Tracking number needed for orders that are shipped.");
 }
 
-if ($status === 'Delivery' && $status === 'Processing' && empty($tracking)) {
+if ($status === 'Delivery' && $status === 'Shipped' && empty($tracking)) {
 
 	$tracking = 'TRK' . rand(10000,99999);
 }
