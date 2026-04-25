@@ -6,8 +6,7 @@
 <body>
 
 <header>
-	<div class="banner-bg"></div>
-
+		<img src="images/header.png" alt="Piece of Cake Banner" class="header-img">
 	<nav>
 		<a href="?page=home">Home</a>
 		<a href="?page=cart">Cart</a>
