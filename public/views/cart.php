@@ -144,6 +144,7 @@ function show_cart() {
 
     echo "<br>Total: $" . number_format($total, 2);
 }
+?>
 
 <h1>Your Cart</h1>
 
