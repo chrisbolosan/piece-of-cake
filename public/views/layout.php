@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Piece of Cake</title>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header>
 	<h1>Piece of Cake</h1>
-	<img src="images/header.jpg" alt="Piece of Cake Banner" class="header-img">
+	<img src="images/header.png" alt="Piece of Cake Banner" class="header-img">
 	<h1>Piece of Cake</h1>
 
 	<nav>
@@ -35,7 +34,7 @@
 		</div>
 
 		<div class="footer-right">
-			<h3><strong>Contact Information</strong><h3>
+			<h3><strong>Contact Information</strong></h3>
 			<p>Email: pieceofcake@gmail.com</p>
 			<p>Phone: (630) 123-4567</p>
 		</div>
