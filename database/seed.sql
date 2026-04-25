@@ -95,7 +95,7 @@ VALUES
 
 (1,1,1,1,'2026-04-01 11:00:00','2026-04-02 15:00:00','Delivered','TRK10016','Delivery','spring event'),
 (2,2,2,1,'2026-04-08 13:30:00','2026-04-09 16:00:00','Delivered','TRK10017','Delivery','family party'),
-(3,3,3,2,'2026-04-15 09:20:00','2026-05-16 14:00:00','Processing','TRK10018','Delivery','upcoming event'),
+(3,3,3,2,'2026-04-15 09:20:00','2026-05-16 14:00:00','Processing','','Delivery','upcoming event'),
 
 (1,1,1,1,'2026-04-18 10:15:00','2026-04-30 13:00:00','Processing','TRK10019','Delivery','rush order'),
 (2,2,2,1,'2026-04-19 12:40:00','2026-05-20 15:00:00','Processing','TRK10020','Delivery','Weekend order'),
