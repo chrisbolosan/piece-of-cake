@@ -1,6 +1,5 @@
 <?php
 session_start();
-require 'config.php';
 
 // Cart validation
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
