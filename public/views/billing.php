@@ -1,7 +1,9 @@
 <?php
 session_start();
-
 require 'config.php';
+
+echo __FILE__;
+exit;
 
 // Cart validation
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
