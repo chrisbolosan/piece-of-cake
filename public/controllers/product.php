@@ -13,7 +13,7 @@ if (!isset($_GET['id'])){
 }
 
 // Validate GET Parameter
-$ID = $_GET['id'] ?? 0;
+$cakeID = $_GET['id'] ?? 0;
 
 $stmt = $pdo->prepare("SELECT * FROM CAKE WHERE CakeID = ?");
 $stmt->execute([$cakeID]);
