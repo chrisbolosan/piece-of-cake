@@ -7,6 +7,20 @@ $tracking = $_POST['tracking'];
 $delivery = $_POST['delivery'] ?: null;
 $notes = $_POST['notes'];
 
+// Grab fullfillment type
+$resultsFulfillment = $pdo->prepare("SELECT Fulfillment FROM ORDERS WHERE OrderID = ?");
+$resultsFulfillment->execute([$id]);
+$type=$resultsFulfillment->fetchColumn();
+
+if ($type=='Pickup') {
+	$tracking == null;
+}
+
+if ($type =='Delivery' && $status === 'Shipped' && empty($tracking)) {
+	die("Tracking number needed for orders that are shipped.");
+}
+
+
 $prepared = $pdo->prepare("
 	UPDATE ORDERS SET OrderStatus=?, TrackingNumber =?, TimeDateDelivery = ?, Notes = ? WHERE OrderID=?
 ");
