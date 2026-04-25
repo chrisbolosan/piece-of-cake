@@ -1,6 +1,7 @@
 <h2>Order #<?= $order['OrderID'] ?></h2>
 
 <p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
+<p><strong>Type:</strong> <?= $order['FulfillmentType'] ?></p>
 <p><strong>Placed:</strong> <?= $order['TimeDatePlaced'] ?></p>
 <p><strong>Delivery:</strong> <?= $order['TimeDateDelivery'] ?? 'N/A' ?></p>
 <p><strong>Notes:</strong> <?= $order['Notes'] ?? 'None' ?></p>
@@ -30,12 +31,23 @@
 
 <form method="POST" action="actions/update_order.php">
 	<input type="hidden" name="order_id" value="<?= $id ?>">
+<select name="status">
 
-	<select name="status">
-		<option <?= $order['OrderStatus']=='Processing'?'selected':'' ?>>Processing</option>
-		<option <?= $order['OrderStatus']=='Completed'?'selected':'' ?>>Completed</option>
-		<option <?= $order['OrderStatus']=='Shipped'?'selected':'' ?>>Shipped</option>
-	</select>
+<?php if ($order['FulfillmentType'] === 'Pickup'): ?>
+
+	<option <?= $order['OrderStatus']=='Processing'?'selected':'' ?>>Processing</option>
+	<option <?= $order['OrderStatus']=='Ready for Pickup'?'selected':'' ?>>Ready for Pickup</option>
+	<option <?= $order['OrderStatus']=='Delivered'?'selected':'' ?>>Delivered</option>
+
+<?php else: ?>
+
+	<option <?= $order['OrderStatus']=='Processing'?'selected':'' ?>>Processing</option>
+	<option <?= $order['OrderStatus']=='Shipped'?'selected':'' ?>>Shipped</option>
+	<option <?= $order['OrderStatus']=='Delivered'?'selected':'' ?>>Delivered</option>
+
+<?php endif; ?>
+
+</select>
 	<br>
 
 	<label>Tracking Number:</label>
