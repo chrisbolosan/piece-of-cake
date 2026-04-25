@@ -1,5 +1,6 @@
 <?php
 session_start();
+require 'config.php'; 
 require_once __DIR__ . '/../includes/config.php';
 
 
