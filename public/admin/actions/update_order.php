@@ -20,6 +20,14 @@ if ($type =='Delivery' && $status === 'Shipped' && empty($tracking)) {
 	die("Tracking number needed for orders that are shipped.");
 }
 
+if ($status === 'Delivery' && $status === 'Processing' && empty($tracking)) {
+
+	$tracking = 'TRK' . rand(10000,99999);
+}
+
+if ($status == 'Delivered' && empty($delivery)) {
+	$delivery = date('Y-m-d H:i:s');
+}
 
 $prepared = $pdo->prepare("
 	UPDATE ORDERS SET OrderStatus=?, TrackingNumber =?, TimeDateDelivery = ?, Notes = ? WHERE OrderID=?
