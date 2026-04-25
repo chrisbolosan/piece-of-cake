@@ -5,8 +5,6 @@
 // TODO: Create billing logic and query cart
 // ============================================
 
-<?php
-
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -58,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $processed = true;
 }
-?>
 
 require_once __DIR__ . '/../includes/config.php';
 $view = __DIR__ . '/../views/billing.php';
