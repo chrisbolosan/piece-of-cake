@@ -6,6 +6,7 @@
 	<th>Customer</th>
 	<th>Status</th>
 	<th>Order Placed</th>
+	<th>Tracking</>
 	<th>Actions</th>
 
 </tr>
@@ -16,6 +17,7 @@
 	<td><?= $row['Name'] ?></td>
 	<td><?= $row['OrderStatus'] ?></td>
 	<td><?= $row['TimeDatePlaced'] ?></td>
+	<td><?= $row['TrackingNumber'] ?? '-' ?></td>
 	<td>
 		<a href="?page=order_view&id=<?= $row['OrderID'] ?>">View</a>
 	</td>

@@ -144,3 +144,4 @@ function show_cart() {
 
     echo "<br>Total: $" . number_format($total, 2);
 }
+

@@ -7,16 +7,17 @@ $items = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	$tracking = $_POST['tracking'] ?? '';
-
+	$email = $_POST['Email'] ?? '';
+	$orderID = $_POST['OrderID'] ?? '';
 	$prepared = $pdo->prepare("
-		SELECT O.*, C.Name, D.StreetAddress, D.City, D.State, D.ZIP, P.Amount
+		SELECT O.*, C.Name, C.Email, D.StreetAddress, D.City, D.State, D.ZIP, P.Amount
 		FROM ORDERS O
 		JOIN CUSTOMER C ON O.CustomerID = C.CustomerID
 		JOIN DESTINATION D ON O.AddressID = D.AddressID
 		JOIN PAYMENT P ON O.PaymentID = P.PaymentID
-		WHERE O.TrackingNumber =?
+		WHERE O.TrackingNumber =? OR O.OrderID = ? AND C.EMAIL = ?
 ");
-	$prepared->execute([$tracking]);
+	$prepared->execute([$tracking, $orderID, $email]);
 
 	$order = $prepared->fetch(PDO::FETCH_ASSOC);
 	

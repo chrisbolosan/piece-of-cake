@@ -60,7 +60,69 @@ h1 {
     display: block;
 }
 
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+}
+
+.footer-left{
+    display: flex;
+    align-items: center;
+}
+
+.footer-right{
+    text-align: right;
+}
+
 .footer-logo {
-    width: 100px;
+    width: 120px;
     height: auto;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    margin: 50px;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.product-image img {
+    width: 350px;
+    height auto;
+    border-radius: 10px;
+}
+
+.product-details {
+    max-width: 400px;
+}
+
+.product-details h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.product-details h3 {
+    font-size: 28px;
+    margin: 20px;
+}
+
+.product-details textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+.product-details button {
+    background-color: #cc3366;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
 }
