@@ -11,11 +11,18 @@ switch($page) {
 		require 'controllers/cakes.php';
 		break;
 	
-	//add edit forms
+	case 'dashboard':
+		require 'controllers/dashboard.php';
+		break;
+
 	case 'cake_form':
 		require 'controllers/cake_form.php';
 		break;
 
+	case 'customers':
+		require 'controllers/customers.php';
+		break;
+	
 	case 'orders':
 		require 'controllers/orders.php';
 		break;
@@ -24,10 +31,14 @@ switch($page) {
 		require 'controllers/order_view.php';
 		break;
 
-	case 'customers':
-		require 'controllers/customers.php';
+	case 'outstanding':
+		require 'controllers/outstanding.php';
+		break;
+
+	case 'payments':
+		require 'controllers/payments.php';
 		break;
 	
 	default:
-		require 'controllers/dashboard.php'; 
+		require 'controllers/404.php'; 
 }

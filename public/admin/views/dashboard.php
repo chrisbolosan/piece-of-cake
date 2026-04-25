@@ -17,11 +17,40 @@ try {
 		<div class="status">
 			<strong>Database Status:</strong> <?php echo htmlspecialchars($status); ?>
 		</div>
-		<div>
-			<h2>Admin Dashboard</h2>
-			<div>Total Orders: <?= $totalOrders ?></div>
-			<div>Processing: <?= $processing ?></div>
-			<div>Completed: <?= $completed ?></div>
+		<!-- STATS -->
+		<div class="stats-grid">
+			<div class="stat-card">
+				<div class="stat-info">
+					<h3>Total Orders</h3>
+					<div class="stat-value"><?php echo $totalOrders; ?></div>
+					<div>📦</div>	
+				</div>
+			</div>
+
+			<div class="stat-card">
+				<div class="stat-info">
+					<h3>Processing</h3>
+					<div id="value" class="stat-value"><?php echo $processing; ?></div>
+					<div>⏳</div>
+
+				</div>
+			</div>
+
+			<div class="stat-card">
+				<div class="stat-info">
+					<h3>Completed</h3>
+					<div class="stat-value"><?php echo $completed; ?></div>
+					<div>✅</div>
+				</div>
+			</div>
+
+			<div class="stat-card">
+				<div class="stat-info">
+					<h3>Pending</h3>
+					<div id="value" class="stat-value"><?php echo $totalOrders - $completed - $processing; ?></div>
+					<div>⏸️</div>
+				</div>
+			</div>
 		</div>
 	</main>
 

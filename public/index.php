@@ -11,6 +11,9 @@ error_reporting(E_ALL);
 $page = $_GET['page'] ?? 'home';
 
 switch($page) {
+	case 'home':
+		require 'controllers/home.php';
+		break;
 	case 'products':
 		require 'controllers/products.php';
 		break;
@@ -38,8 +41,11 @@ switch($page) {
 	// - etc
 	// ========================================	
 
+	case 'track':
+		require 'controllers/track.php';
+		break;
+
 	default:
-		// Fallback route
-		require 'controllers/home.php';
+		require 'controllers/404.php';
 }
 ?>
