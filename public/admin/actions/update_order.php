@@ -3,21 +3,17 @@ require_once '../../includes/config.php';
 
 $id = $_POST['order_id'];
 $status = $_POST['status'];
-$tracking = $_POST['tracking'];
+$tracking = $_POST['tracking'] ?? null;
 $delivery = $_POST['delivery'] ?: null;
-$notes = $_POST['notes'];
+$notes = $_POST['notes'] ?? '';
 
 // Grab fullfillment type
-$resultsFulfillment = $pdo->prepare("SELECT Fulfillment FROM ORDERS WHERE OrderID = ?");
+$resultsFulfillment = $pdo->prepare("SELECT FulfillmentType FROM ORDERS WHERE OrderID = ?");
 $resultsFulfillment->execute([$id]);
 $type=$resultsFulfillment->fetchColumn();
 
 if ($type=='Pickup') {
 	$tracking == null;
-}
-
-if ($type =='Delivery' && $status === 'Shipped' && empty($tracking)) {
-	die("Tracking number needed for orders that are shipped.");
 }
 
 if ($status === 'Delivery' && $status === 'Shipped' && empty($tracking)) {

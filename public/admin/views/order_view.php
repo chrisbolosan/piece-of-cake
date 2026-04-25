@@ -49,7 +49,7 @@
 </select>
 	<br>
 
-	<div> id="tracking-wrapper">
+	<div id="tracking-wrapper">
 		<label>Tracking Number:</label>
 		<input type="text" name="tracking" value="<?= htmlspecialchars($order['TrackingNumber'] ?? '') ?>">
 	</div>
