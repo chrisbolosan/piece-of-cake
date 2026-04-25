@@ -21,16 +21,41 @@ INSERT INTO ADMINISTRATOR (Name) VALUES
 INSERT INTO CUSTOMER (Name, Email, PhoneNum) VALUES
 ('Chris Bolosan', 'chris123@gmail.com', '6308675309'),
 ('John Doe', 'jane@gmail.com', '6305555678'),
-('James Cameron', 'mike@gmail.com', '6304321234');
+('James Cameron', 'mike@gmail.com', '6304321234'),
+('Sarah Connor', 'sarah@gmail.com', '6301112222'),
+('Tony Stark', 'tony@gmail.com', '6303334444');
 
 -- CAKES
 INSERT INTO CAKE (Flavor, Size, BasePrice, Frosting, NumInStock, Img, AdminID) VALUES
-('Chocolate', '6-inch', 24.99, 'Chocolate Buttercream', 10, 'images/ChocCake.jpg', 1),
-('Vanilla', '8-inch', 29.99, 'Vanilla Buttercream', 8, 'images/VanillaCake.jpg', 1),
-('Red Velvet', '6-inch', 27.99, 'Cream Cheese', 5, 'images/RedVelvet.jpg', 2),
-('Strawberry', '10-inch', 34.99, 'Whipped Cream', 6, 'images/StrawbCake.jpg', 2),
-('Carrot', '8-inch', 31.99, 'Cream Cheese', 4, 'images/CarrotCake.jpg', 1);
 
+-- CHOCOLATEE
+('Chocolate', '6-inch', 24.99, 'Chocolate Buttercream', 10, 'images/ChocCake.jpg', 1),
+('Chocolate', '8-inch', 29.99, 'Chocolate Buttercream', 8, 'images/ChocCake.jpg', 1),
+('Chocolate', '10-inch', 34.99, 'Chocolate Buttercream', 6, 'images/ChocCake.jpg', 1),
+('Chocolate', '12-inch', 39.99, 'Chocolate Buttercream', 5, 'images/ChocCake.jpg', 1),
+
+-- VANILLA
+('Vanilla', '6-inch', 23.99, 'Vanilla Buttercream', 9, 'images/VanillaCake.jpg', 1),
+('Vanilla', '8-inch', 29.99, 'Vanilla Buttercream', 8, 'images/VanillaCake.jpg', 1),
+('Vanilla', '10-inch', 33.99, 'Vanilla Buttercream', 6, 'images/VanillaCake.jpg', 1),
+('Vanilla', '12-inch', 38.99, 'Vanilla Buttercream', 5, 'images/VanillaCake.jpg', 1),
+
+-- RED VELVET
+('Red Velvet', '6-inch', 27.99, 'Cream Cheese', 7, 'images/RedVelvet.jpg', 2),
+('Red Velvet', '8-inch', 31.99, 'Cream Cheese', 6, 'images/RedVelvet.jpg', 2),
+('Red Velvet', '10-inch', 36.99, 'Cream Cheese', 5, 'images/RedVelvet.jpg', 2),
+('Red Velvet', '12-inch', 41.99, 'Cream Cheese', 4, 'images/RedVelvet.jpg', 2),
+
+-- STRAWBERRY
+('Strawberry', '6-inch', 26.99, 'Whipped Cream', 8, 'images/StrawbCake.jpg', 2),
+('Strawberry', '8-inch', 30.99, 'Whipped Cream', 7, 'images/StrawbCake.jpg', 2),
+('Strawberry', '10-inch', 34.99, 'Whipped Cream', 6, 'images/StrawbCake.jpg', 2),
+('Strawberry', '12-inch', 39.99, 'Whipped Cream', 5, 'images/StrawbCake.jpg', 2),
+-- CARROT
+('Carrot', '6-inch', 25.99, 'Cream Cheese', 7, 'images/CarrotCake.jpg', 1),
+('Carrot', '8-inch', 31.99, 'Cream Cheese', 6, 'images/CarrotCake.jpg', 1),
+('Carrot', '10-inch', 35.99, 'Cream Cheese', 5, 'images/CarrotCake.jpg', 1),
+('Carrot', '12-inch', 40.99, 'Cream Cheese', 4, 'images/CarrotCake.jpg', 1);
 -- DESTINATION
 INSERT INTO DESTINATION (StreetAddress, AptNumber, ZIP, City, State) VALUES
 ('123 Main St', NULL, '60543', 'Oswego', 'IL'),
@@ -41,8 +66,9 @@ INSERT INTO DESTINATION (StreetAddress, AptNumber, ZIP, City, State) VALUES
 INSERT INTO PAYMENT (Method, Amount, PaymentStatus, CardholderName, CardLastFour) VALUES
 ('Card', 54.98, 'Completed', 'Chris Bolosan', '1234'),
 ('Card', 29.99, 'Completed', 'John Doe', '5678'),
-('Card', 62.98, 'Processing', 'James Cameron', '4321');
-
+('Card', 62.98, 'Processing', 'James Cameron', '4321'),
+('Card', 48.99, 'Completed', 'Sarah Connor', '2222'),
+('Card', 59.99, 'Completed', 'Tony Stark', '4444');
 -- ORDERS
 INSERT INTO ORDERS 
 (CustomerID, PaymentID, AddressID, AdminID, TimeDatePlaced, TimeDateDelivery, OrderStatus, TrackingNumber, Notes)
@@ -74,7 +100,9 @@ VALUES
 (1,1,1,1,'2026-04-18 10:15:00','2026-04-19 13:00:00','Processing','TRK1019','rush order'),
 (2,2,2,1,'2026-04-19 12:40:00','2026-04-20 15:00:00','Processing','TRK1020','Weekend order'),
 (3,3,3,2,'2026-04-20 14:00:00','2026-04-21 16:00:00','Processing','TRK1021','pickup order'),
-(1,1,1,1,'2026-04-21 16:20:00','2026-04-22 18:00:00','Processing','TRK1022','last minute order');
+(1,1,1,1,'2026-04-21 16:20:00','2026-04-22 18:00:00','Processing','TRK1022','last minute order'),
+(4,4,1,1,'2026-04-10 12:00:00','2026-04-11 15:00:00','Completed','TRK1023','first order'),
+(5,5,2,2,'2026-04-11 14:00:00','2026-04-12 16:00:00','Completed','TRK1024','first order');
 -- ORDER ITEMS
 INSERT INTO ORDER_ITEM 
 (OrderID, CakeID, Quantity, UserImg, UserMessage)
@@ -106,7 +134,8 @@ VALUES
 (21,5,1,NULL,NULL),
 (22,1,2,NULL,NULL),
 (23,2,1,NULL,NULL),
-(24,3,1,NULL,NULL);
-
+(24,3,1,NULL,NULL),
+(25,1,1,NULL,NULL),
+(26,2,1,NULL,NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
