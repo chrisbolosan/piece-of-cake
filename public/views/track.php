@@ -1,6 +1,11 @@
 <h3>Track Your Order</h3>
 
 <form method="POST">
+	<label>Enter Order ID: </label>
+	<input type="number" name="orderID" maxlength=8 placeholder="123" required>
+	<label>Email: </label> 
+	<input type="text" name="email" maxlength=30 placeholder="smith@gmail.com" required>
+
 	<label>Tracking Number:</label>
 	<input type="text" name="tracking" maxlength=8 placeholder="Enter Tracking ID" required>
 	<button type="submit">Track</button>
