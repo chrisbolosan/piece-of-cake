@@ -34,12 +34,17 @@
 	<select name="status">
 		<option <?= $order['OrderStatus']=='Processing'?'selected':'' ?>>Processing</option>
 		<option <?= $order['OrderStatus']=='Completed'?'selected':'' ?>>Completed</option>
+		<option <?= $order['OrderStatus']=='Shipped'?'selected':'' ?>>Shipped</option>
 	</select>
 	<br>
-<br>
+
+	<label>Tracking Number:</label>
+	<input type="text" name="tracking" value="<?= $order['TrackingNumber'] ?? '' ?>">
+
+	<br>
 
 	<label>Delivery Date:</label>
-	<input type="datetime-local" name="delivery"
+
 		value="<?= $order['TimeDateDelivery'] ? date('Y-m-d\TH:i', strtotime($order['TimeDateDelivery'])) : '' ?>">
 	<br>
 	<br>
