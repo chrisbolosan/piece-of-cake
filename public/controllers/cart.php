@@ -7,12 +7,8 @@
 //Documentation to understand session: https://www.php.net/manual/en/function.session-start.php
 // ============================================
 
-
 //cookie session
-session_start();
-
-var_dump($_POST, $_GET, $_SESSION['cart']); //Trying to see if form is submitting
-exit;
+session_start(); 
 
 $cart = $_SESSION['cart'] ?? [];
 
