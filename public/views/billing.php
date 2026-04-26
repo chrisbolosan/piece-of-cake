@@ -5,15 +5,11 @@ require 'config.php';
 echo __FILE__;
 exit;
 
-// Cart validation
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-    header("Location: cart.php");
+    header("Location: index.php?page=cart");
     exit;
 }
 
-// Total Calculation
-$processed = false;
-$orderID = null;
 $total = 0;
 
 foreach ($_SESSION['cart'] as $id => $qty) {
@@ -23,7 +19,9 @@ foreach ($_SESSION['cart'] as $id => $qty) {
     $total += $row['BasePrice'] * $qty;
 }
 
-// Checkout process
+$processed = false;
+$orderID = null;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name     = $_POST['name'];
     $address  = $_POST['address'];
@@ -35,15 +33,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $exp      = $_POST['exp'];
     $cvv      = $_POST['cvv'];
 
-    $stmt = $pdo->prepare("INSERT INTO Orders (CustomerName, Address, City, State, Zip, CardName, CardNumber, Expiration, CVV, TotalAmount, Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Processing')");
-    $stmt->execute([$name, $address, $city, $state, $zip, $cardname, $cardnum, $exp, $cvv, $total]);
-    $orderID = $pdo->lastInsertId();
+    $stmt = $pdo->prepare("INSERT INTO PAYMENT (Method, Amount, CardholderName, CardLastFour) VALUES ('Card', ?, ?, ?)");
+    $stmt->execute([$total, $cardname, substr($cardnum, -4)]);
+    $paymentID = $pdo->lastInsertId();
 
-    foreach ($_SESSION['cart'] as $id => $qty) {
-        $stmt = $pdo->prepare("INSERT INTO OrderItems (OrderID, ProductID, Quantity) VALUES (?, ?, ?)");
-        $stmt->execute([$orderID, $id, $qty]);
-    }
+    $stmt = $pdo->prepare("INSERT INTO DESTINATION (StreetAddress, ZIP, City, State) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$address, $zip, $city, $state]);
+    $addressID = $pdo->lastInsertId();
 
+<<<<<<< HEAD
     // Cart Reset
     $_SESSION['cart'] = [];
 
@@ -91,3 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </body>
 </html>
+=======
+    $stmt = $pdo->prepare("INSERT INTO ORD
+>>>>>>> 4a5eba9 (updated to match schema)
