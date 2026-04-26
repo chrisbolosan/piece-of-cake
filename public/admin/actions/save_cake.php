@@ -10,7 +10,7 @@ $size = $_POST['size'];
 $price = $_POST['price'];
 $frosting = $_POST['frosting'];
 $stock = (int)$_POST['stock'];
-$img = !empty($_POST['img']) ? $_POST['img'] : 'images/soon.jpeg';
+$img = !empty($_POST['img']) ? $_POST['img'] : 'images/comingsoon.png';
 
 if ($id) {
 	//update
