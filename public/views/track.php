@@ -20,6 +20,11 @@
 	padding: 10px 20px;
 	cursor: pointer;
 }
+
+.divider {
+	margin: 20px 0;
+	border-top: 1px solid black;
+}
 </style>
 
 <div class="track-container">
@@ -28,55 +33,67 @@
 		<h3>Track Your Order</h3>
 
 		<form method="POST">
-			<input type="number" name="orderID" maxlength=8 placeholder="Order ID" required>
+			<input type="number" name="orderID" min="1" maxlength=8 placeholder="Order ID" required>
 			<input type="text" name="email" maxlength=30 placeholder="Email" required>
 			<br><br>
 			<button type="submit">Track</button>
 		</form>
 	</div>
-
+	
 		<?php if ($order): ?>
+		<!-- card -->
+		<div class="track-card">
 
-		<h3> Order # <?= $order['OrderID'] ?></h2>
+			<h3> Order # <?= $order['OrderID'] ?></h2>
 
-		<p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
+			<p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
 
-		<?php if ($order['FulfillmentType'] === 'Pickup'): ?>
-			<p><strong>Pickup Status:</strong> <?= $order['OrderStatus'] ?></p>
-		<?php else: ?>
-
-			<?php if ($order['TrackingNumber']): ?>
-				<p><strong>Tracking Number:</strong> <?= $order['TrackingNumber'] ?></p>
+			<?php if ($order['FulfillmentType'] === 'Pickup'): ?>
+				<p><strong>Pickup Status:</strong> <?= $order['OrderStatus'] ?></p>
 			<?php else: ?>
-				<p><em>Tracking available once your order ships.</em></p>
+
+				<?php if ($order['TrackingNumber']): ?>
+					<p><strong>Tracking Number:</strong> <?= $order['TrackingNumber'] ?></p>
+				<?php else: ?>
+					<p><em>Tracking available once your order ships.</em></p>
+				<?php endif; ?>
+			
+				<div class="divider"></div>
+
+				<h4> Shipping Address</h4>
+
+				<p>
+					<?= $order['StreetAddress'] ?>,
+					<?= $order['City'] ?>,
+					<?= $order['State'] ?>,
+					<?= $order['ZIP'] ?>,
+				</p>
+
 			<?php endif; ?>
 
-			<h4> Shipping Address</h4>
+			<div class="divider"></div>
 
-			<p>
-				<?= $order['StreetAddress'] ?>,
-				<?= $order['City'] ?>,
-				<?= $order['State'] ?>,
-				<?= $order['ZIP'] ?>,
-			</p>
-		<?php endif; ?>
+			<h4> Customer Name</h4>
+			<p><?= $order['Name'] ?> </p>
 
-		<h4> Customer Name</h4>
-		<p><?= $order['Name'] ?> </p>
+			<div class="divider"></div>
+		
+			<h4> Payment</h4>	
+			<p><strong>Order Total:</strong> $<?= number_format($order['Amount'], 2) ?></p>
+			<p><strong>Total Spent (All Orders):</strong> $<?= number_format($totalSpent, 2) ?></p>	
 
-		<p><strong>Order Total:</strong> $<?= number_format($order['Amount'], 2) ?></p>
+			<div class="divider"></div>
 
-		<p><strong>Total Spent (All Orders):</strong> $<?= number_format($totalSpent, 2) ?></p>	
-
-		<h4> Items</h4>
-		<?php while ($item = $items->fetch(PDO::FETCH_ASSOC)): ?>
-			<p>
-				<?= $item['Flavor'] ?>
-				(<?= $item['Size'] ?>)
-				 x <?= $item['Quantity'] ?>
-			</p>
-		<?php endwhile; ?>
-
+			<h4> Items</h4>
+			<?php while ($item = $items->fetch(PDO::FETCH_ASSOC)): ?>
+				<p>
+					<?= $item['Flavor'] ?>
+					(<?= $item['Size'] ?>)
+					 x <?= $item['Quantity'] ?>
+				</p>
+			<?php endwhile; ?>
+		</div>
+	
 	<?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'):?>
 		<p>order not found</p>	
 	<?php endif; ?>
