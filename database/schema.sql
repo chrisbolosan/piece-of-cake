@@ -94,7 +94,7 @@ CREATE TABLE CAKE (
     BasePrice     DECIMAL(8, 2)   NOT NULL,
     Frosting      VARCHAR(100)    NOT NULL,
     NumInStock    INT             NOT NULL DEFAULT 0,
-    Img           VARCHAR(255),
+    Img           VARCHAR(255)    NOT NULL DEFAULT 'comingsoon.png',
     AdminID       INT,
     FOREIGN KEY (AdminID) REFERENCES ADMINISTRATOR(AdminID)
 );
