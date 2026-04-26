@@ -25,6 +25,28 @@
 	margin: 20px 0;
 	border-top: 1px solid black;
 }
+
+.progress-bar {
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	margin: 25px 0;
+}
+
+.step {
+	text-align: center;
+	flex:1;
+	positive: relative;
+	z-index: 1;
+}
+
+.circle {
+	width: 25px;
+	border-radius: 50%;	
+	background #ccc;
+	margin:auto;
+
+}
 </style>
 
 <div class="track-container">
@@ -47,6 +69,29 @@
 			<h3> Order # <?= $order['OrderID'] ?></h2>
 
 			<p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
+			
+			<!-- VISUAL TRACKER -->
+			
+			<?php
+			$status = $order['OrderStatus'];	
+			$type = $order['FulfillmentType'];
+			if ($type ==='Pickup') {
+				$steps = ['Processing', 'Ready for Pickup', 'Delivered'];
+			} else {
+				$steps = ['Processing', 'Shipped', 'Delivered'];
+			}
+
+			$currentIdx = array_search($status, $steps);
+			?>
+			
+			<div class="progress-bar">
+				<?php foreach($steps as $idx => $step): ?>
+					<div class="step <?= $idx <= $currentIdx ? 'active' : '' ?>">
+					<div class="circle"></div> 
+					<div class="label"><?= $step ?><div>
+
+				<?php endforeach: ?>	
+			</div>	
 
 			<?php if ($order['FulfillmentType'] === 'Pickup'): ?>
 				<p><strong>Pickup Status:</strong> <?= $order['OrderStatus'] ?></p>
