@@ -40,7 +40,7 @@
     <div class="grid">
 
         <div class="card">
-            <p>"Piece of Cake Bakery made ordering for my birthday incredibly easy. The cake looked amazing and tasted even better!"</p>
+            <p>"Piece of Cake Bakery made ordering for my daughter's birthday incredibly easy. The cake looked amazing!"</p>
             <strong>- Chris B.</strong>
         </div>
 
