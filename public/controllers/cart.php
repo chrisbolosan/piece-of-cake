@@ -1,4 +1,8 @@
 <?php
+
+var_dump($_POST, $_GET, $_SESSION['cart']); //Trying to see if form is submitting
+exit;
+
 // ============================================
 // CART PAGE CONTROLLER
 // Purpose: Display storefront fullcartpage
