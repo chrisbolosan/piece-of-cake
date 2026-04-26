@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2ec9c97 (testing)
 <?php
 
 $action = $_GET['action'] ?? 'view';
@@ -145,6 +148,7 @@ function show_cart() {
 
     echo "<br>Total: $" . number_format($total, 2);
 }
+<<<<<<< HEAD
 =======
 <h1>Your Cart</h1>
 
@@ -158,3 +162,6 @@ function show_cart() {
     </ul>
 <?php endif; ?>
 >>>>>>> e7d664a (testing)
+=======
+
+>>>>>>> 2ec9c97 (testing)
