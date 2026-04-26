@@ -35,7 +35,7 @@ switch($page) {
 		break;
 
 	case 'about':
-		$view = __DIR__ . '/views/about.php';
+		require 'controllers/about.php';
 		break;
 
 	// ========================================
