@@ -6,7 +6,7 @@ $items = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-	$tracking = $_POST['tracking'] ?? '';
+	$tracking = $_POST['tracking'] ?? 'NOTRACK';
 	$email = $_POST['email'] ?? '';
 	$orderID = $_POST['orderID'] ?? '';
 	$prepared = $pdo->prepare("
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		JOIN CUSTOMER C ON O.CustomerID = C.CustomerID
 		JOIN DESTINATION D ON O.AddressID = D.AddressID
 		JOIN PAYMENT P ON O.PaymentID = P.PaymentID
-		WHERE O.TrackingNumber =? OR O.OrderID = ? AND C.EMAIL = ?
+		WHERE (O.TrackingNumber =? OR O.OrderID = ?) AND C.EMAIL = ?
 ");
 	$prepared->execute([$tracking, $orderID, $email]);
 
