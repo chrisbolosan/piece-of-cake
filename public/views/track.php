@@ -36,16 +36,15 @@
 .step {
 	text-align: center;
 	flex:1;
-	positive: relative;
+	position: relative;
 	z-index: 1;
 }
 
 .circle {
 	width: 25px;
 	border-radius: 50%;	
-	background #ccc;
+	background: #ccc;
 	margin:auto;
-
 }
 </style>
 
@@ -66,7 +65,7 @@
 		<!-- card -->
 		<div class="track-card">
 
-			<h3> Order # <?= $order['OrderID'] ?></h2>
+			<h3> Order # <?= $order['OrderID'] ?></h3>
 
 			<p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
 			
@@ -85,13 +84,11 @@
 			?>
 			
 			<div class="progress-bar">
-				<?php foreach($steps as $idx => $step): ?>
-					<div class="step <?= $idx <= $currentIdx ? 'active' : '' ?>">
-					<div class="circle"></div> 
-					<div class="label"><?= $step ?><div>
-
-				<?php endforeach: ?>	
-			</div>	
+			<?php foreach($steps as $idx => $step): ?>
+				<div class="step <?= $idx <= $currentIdx ? 'active' : '' ?>">
+				<div class="circle"></div> 
+				<div class="label"><?= $step ?></div> </div>
+			<?php endforeach; ?> </div>	
 
 			<?php if ($order['FulfillmentType'] === 'Pickup'): ?>
 				<p><strong>Pickup Status:</strong> <?= $order['OrderStatus'] ?></p>
