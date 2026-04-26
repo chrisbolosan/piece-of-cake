@@ -75,7 +75,7 @@ function update_cart() {
 // Displays Checkout
 function show_checkout() {
     echo '
-        <form method="post" action="cart.php?action=place_order">
+        <form method="post" action="index.php?page=cart&action=place_order">
             <input name="address" placeholder="Shipping Address">
             <input name="billing" placeholder="Billing Info (fake)">
             <button type="submit">Place Order</button>
@@ -93,21 +93,25 @@ function place_order() {
     $address = $_POST['address'];
     $billing = $_POST['billing'];
 
+    
     $ids = implode(',', array_keys($cart));
-    $stmt = $pdo->query("SELECT id, price FROM Products WHERE id IN ($ids)");
+    $stmt = $pdo->query("SELECT CakeID, BasePrice FROM CAKE WHERE CakeID IN ($ids)");
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    
     $total = 0;
     foreach ($products as $p) {
-        $total += $p['price'] * $cart[$p['id']];
+        $total += $p['BasePrice'] * $cart[$p['CakeID']];
     }
 
-    $stmt = $pdo->prepare("INSERT INTO Orders (customer_id, total, status, ship_address) VALUES (1, ?, 'Processing', ?)");
-    $stmt->execute([$total, $address]);
+    
+    $stmt = $pdo->prepare("INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes) VALUES (1, 1, 1, ?)");
+    $stmt->execute([$address]);
     $order_id = $pdo->lastInsertId();
 
+    
     foreach ($cart as $id => $qty) {
-        $stmt = $pdo->prepare("INSERT INTO OrderItems (order_id, product_id, quantity) VALUES (?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity) VALUES (?, ?, ?)");
         $stmt->execute([$order_id, $id, $qty]);
     }
 
@@ -127,21 +131,21 @@ function show_cart() {
         return;
     }
 
+
     $ids = implode(',', array_keys($cart));
-    $stmt = $pdo->query("SELECT id, name, price FROM Products WHERE id IN ($ids)");
+    $stmt = $pdo->query("SELECT CakeID, Flavor, BasePrice FROM CAKE WHERE CakeID IN ($ids)");
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $total = 0;
 
     foreach ($products as $p) {
-        $id = $p['id'];
+        $id = $p['CakeID'];
         $qty = $cart[$id];
-        $line = $p['price'] * $qty;
+        $line = $p['BasePrice'] * $qty;
         $total += $line;
 
-        echo $p['name'] . " — Qty: $qty — $" . number_format($line, 2);
+        echo htmlspecialchars($p['Flavor']) . " — Qty: $qty — $" . number_format($line, 2) . "<br>";
     }
 
     echo "<br>Total: $" . number_format($total, 2);
 }
-
