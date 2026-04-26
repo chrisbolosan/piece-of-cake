@@ -33,6 +33,17 @@
 	margin: 25px 0;
 }
 
+.progress-bar::before {
+	content: '';
+	position: absolute;
+	top: 12px;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: #eee;
+	z-index: 0;
+}
+
 .step {
 	text-align: center;
 	flex:1;
@@ -42,9 +53,19 @@
 
 .circle {
 	width: 25px;
+	height: 25px;
 	border-radius: 50%;	
 	background: #ccc;
-	margin:auto;
+	margin: 0 auto;
+}
+
+.step.active .circle {
+	background: #4CAF50; 
+}
+
+.label {
+	font-size: 12px;
+	margin-top: 6px;
 }
 </style>
 
