@@ -62,7 +62,7 @@ nav a:hover {
 }
 .banner-bg {
     width: 100%;
-    height: 250px; /* Adjust this to your preferred height */
+    height: auto; /* Adjust this to your preferred height */
     background-image: url('../images/header.png');
     background-repeat: no-repeat;
     background-position: center;
