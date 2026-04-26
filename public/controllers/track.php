@@ -7,8 +7,8 @@ $items = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	$tracking = $_POST['tracking'] ?? '';
-	$email = $_POST['Email'] ?? '';
-	$orderID = $_POST['OrderID'] ?? '';
+	$email = $_POST['email'] ?? '';
+	$orderID = $_POST['orderID'] ?? '';
 	$prepared = $pdo->prepare("
 		SELECT O.*, C.Name, C.Email, D.StreetAddress, D.City, D.State, D.ZIP, P.Amount
 		FROM ORDERS O
