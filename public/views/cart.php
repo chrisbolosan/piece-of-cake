@@ -45,7 +45,7 @@ function add_to_cart() {
         $_SESSION['cart'][$id] = $qty;
     }
 
-    header("Location: cart.php");
+    header("Location: index.php?page=cart");
     exit;
 }
 
@@ -53,7 +53,7 @@ function add_to_cart() {
 function remove_from_cart() {
     $id = intval($_GET['id']);
     unset($_SESSION['cart'][$id]);
-    header("Location: cart.php");
+    header("Location: index.php?page=cart");
     exit;
 }
 
@@ -68,7 +68,7 @@ function update_cart() {
         $_SESSION['cart'][$id] = $qty;
     }
 
-    header("Location: cart.php");
+    header("Location: index.php?page=cart");
     exit; 
 }
 
