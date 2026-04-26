@@ -1,49 +1,84 @@
-<h3>Track Your Order</h3>
+<style>
+.track-container {
+	max-width:700px;
+	margin: 40px auto;
+	padding: 20px;
+}
 
-<form method="POST">
-	<label>Enter Order ID: </label>
-	<input type="number" name="orderID" maxlength=8 placeholder="123" required>
-	<label>Email: </label> 
-	<input type="text" name="email" maxlength=30 placeholder="smith@gmail.com" required>
+.track-card {
+	background: white;
+	border-radius: 10px;
+	padding: 25px;
+}
 
-	<label>Tracking Number:</label>
-	<input type="text" name="tracking" maxlength=8 placeholder="Enter Tracking ID" required>
-	<button type="submit">Track</button>
-</form>
+.track-form {
+	text-align: center;
+	margin-bottom: 25px;
+}
 
-<?php if ($order): ?>
-	<h3> Order # <?= $order['OrderID'] ?></h2>
-	<p><strong>Status:</strong><?= $order['OrderStatus'] ?></p>
-	<p><strong>Tracking:</strong><?= $order['TrackingNumber'] ?></p>
-	<p><strong>Placed:</strong><?= $order['TimeDatePlaced'] ?></p>
-	<p><strong>Delivery:</strong><?= $order['TimeDateDelivery']?? 'TBD' ?></p>
-	<p><strong>Order Total:</strong> $<?= $order['Amount']?></p>
-	<p><strong>Total Spent:</strong> $<?= $totalSpent ?></p>
+.track-form button {
+	padding: 10px 20px;
+	cursor: pointer;
+}
+</style>
 
-	<h4> Customer Name</h4>
-	<p><?= $order['Name'] ?> </p>
+<div class="track-container">
 
-	<h4> Shipping Address</h4>
-	<p>
-		<?= $order['StreetAddress'] ?>,
-		<?= $order['City'] ?>,
-		<?= $order['State'] ?>,
-		<?= $order['ZIP'] ?>,
-	</p>
+	<div class="track-form">
+		<h3>Track Your Order</h3>
 
-	<h4> Customer Name</h4>
-	<p><?= $order['Name'] ?> </p>
+		<form method="POST">
+			<input type="number" name="orderID" maxlength=8 placeholder="Order ID" required>
+			<input type="text" name="email" maxlength=30 placeholder="Email" required>
+			<br><br>
+			<button type="submit">Track</button>
+		</form>
+	</div>
 
-	<h4> Items</h4>
-	<?php while ($item = $items->fetch(PDO::FETCH_ASSOC)): ?>
-		<p>
-			<?= $item['Flavor'] ?>
-			(<?= $item['Size'] ?>)
-			 x <?= $item['Quantity'] ?>
-		</p>
-	<?php endwhile; ?>
+		<?php if ($order): ?>
 
-<?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'):?>
-	<p>order not found</p>	
-<?php endif; ?>
+		<h3> Order # <?= $order['OrderID'] ?></h2>
 
+		<p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
+
+		<?php if ($order['FulfillmentType'] === 'Pickup'): ?>
+			<p><strong>Pickup Status:</strong> <?= $order['OrderStatus'] ?></p>
+		<?php else: ?>
+
+			<?php if ($order['TrackingNumber']): ?>
+				<p><strong>Tracking Number:</strong> <?= $order['TrackingNumber'] ?></p>
+			<?php else: ?>
+				<p><em>Tracking available once your order ships.</em></p>
+			<?php endif; ?>
+
+			<h4> Shipping Address</h4>
+
+			<p>
+				<?= $order['StreetAddress'] ?>,
+				<?= $order['City'] ?>,
+				<?= $order['State'] ?>,
+				<?= $order['ZIP'] ?>,
+			</p>
+		<?php endif; ?>
+
+		<h4> Customer Name</h4>
+		<p><?= $order['Name'] ?> </p>
+
+		<p><strong>Order Total:</strong> $<?= number_format($order['Amount'], 2) ?></p>
+
+		<p><strong>Total Spent (All Orders):</strong> $<?= number_format($totalSpent, 2) ?></p>	
+
+		<h4> Items</h4>
+		<?php while ($item = $items->fetch(PDO::FETCH_ASSOC)): ?>
+			<p>
+				<?= $item['Flavor'] ?>
+				(<?= $item['Size'] ?>)
+				 x <?= $item['Quantity'] ?>
+			</p>
+		<?php endwhile; ?>
+
+	<?php elseif ($_SERVER['REQUEST_METHOD'] === 'POST'):?>
+		<p>order not found</p>	
+	<?php endif; ?>
+
+</div>

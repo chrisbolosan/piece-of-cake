@@ -6,10 +6,7 @@
 <body>
 
 <header>
-	<h1>Piece of Cake</h1>
-	<img src="images/header.png" alt="Piece of Cake Banner" class="header-img">
-	<h1>Piece of Cake</h1>
-
+		<img src="images/header.png" alt="Piece of Cake Banner" class="header-img">
 	<nav>
 		<a href="?page=home">Home</a>
 		<a href="?page=cart">Cart</a>
