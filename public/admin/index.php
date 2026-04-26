@@ -22,6 +22,10 @@ switch($page) {
 	case 'customers':
 		require 'controllers/customers.php';
 		break;
+
+	case 'about':
+		require 'controllers/about.php';
+		break;
 	
 	case 'orders':
 		require 'controllers/orders.php';

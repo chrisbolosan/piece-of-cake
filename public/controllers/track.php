@@ -6,16 +6,16 @@ $items = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-	$tracking = $_POST['tracking'] ?? '';
-	$email = $_POST['Email'] ?? '';
-	$orderID = $_POST['OrderID'] ?? '';
+	$tracking = $_POST['tracking'] ?? 'NOTRACK';
+	$email = $_POST['email'] ?? '';
+	$orderID = $_POST['orderID'] ?? '';
 	$prepared = $pdo->prepare("
 		SELECT O.*, C.Name, C.Email, D.StreetAddress, D.City, D.State, D.ZIP, P.Amount
 		FROM ORDERS O
 		JOIN CUSTOMER C ON O.CustomerID = C.CustomerID
 		JOIN DESTINATION D ON O.AddressID = D.AddressID
 		JOIN PAYMENT P ON O.PaymentID = P.PaymentID
-		WHERE O.TrackingNumber =? OR O.OrderID = ? AND C.EMAIL = ?
+		WHERE (O.TrackingNumber =? OR O.OrderID = ?) AND C.EMAIL = ?
 ");
 	$prepared->execute([$tracking, $orderID, $email]);
 

@@ -34,6 +34,10 @@ switch($page) {
 		require 'controllers/billing.php';
 		break;
 
+	case 'about':
+		require 'controllers/about.php';
+		break;
+
 	// ========================================
 	// TODO: Addd future routes here
 	// - payment
