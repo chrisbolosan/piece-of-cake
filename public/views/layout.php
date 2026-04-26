@@ -9,6 +9,7 @@
 		<img src="images/header.png" alt="Piece of Cake Banner" class="header-img">
 	<nav>
 		<a href="?page=home">Home</a>
+		<a href="index.php?page=about">About Us</a>
 		<a href="?page=cart">Cart</a>
 		<a href="?page=billing">Billing</a>
 		<a href="?page=track">Track Order</a>
