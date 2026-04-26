@@ -42,12 +42,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $addressID = $pdo->lastInsertId();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Cart Reset
     $_SESSION['cart'] = [];
 
     $processed = true;
 }
 
+=======
+    $stmt = $pdo->prepare("INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes) VALUES (1, ?, ?, ?)");
+    $stmt->execute([$paymentID, $addressID, $name]);
+    $orderID = $pdo->lastInsertId();
+
+    foreach ($_SESSION['cart'] as $id => $qty) {
+        $stmt = $pdo->prepare("INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity) VALUES (?, ?, ?)");
+        $stmt->execute([$orderID, $id, $qty]);
+    }
+
+    $_SESSION['cart'] = [];
+    $processed = true;
+}
+>>>>>>> 3c129ef (accidently cut off rest of code)
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,6 +104,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </body>
 </html>
+<<<<<<< HEAD
 =======
     $stmt = $pdo->prepare("INSERT INTO ORD
 >>>>>>> 4a5eba9 (updated to match schema)
+=======
+>>>>>>> 3c129ef (accidently cut off rest of code)
