@@ -1,6 +1,6 @@
 <h2>Payments</h2>
 
-<table>
+<table border="1">
 	<tr>
 		<th>OrderID</th>
 		<th>Amount</th>

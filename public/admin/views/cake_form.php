@@ -34,6 +34,7 @@
 	<label>Price:</label>
 	<input type="number" name="price" step="0.01" placeholder="0.00" min="0" value="<?= $cake['BasePrice'] ?? ''?>" required>
 	<br>
+	<br>
 
 	<label>Frosting:</label>
 	<input type="text" name="frosting" list="frosting-options" value="<?= $cake['Frosting'] ?? ''?>" required>
