@@ -6,7 +6,7 @@ $totalOrders = $pdo->query("SELECT COUNT(*) FROM ORDERS")->fetchColumn();
 $processing = $pdo->query("
 	SELECT COUNT(*) FROM ORDERS WHERE OrderStatus = 'Processing'")->fetchColumn();
 $completed = $pdo->query("
-	SELECT COUNT(*) FROM ORDERS WHERE OrderStatus = 'Completed'")->fetchColumn();
+	SELECT COUNT(*) FROM ORDERS WHERE OrderStatus = 'Delivered'")->fetchColumn();
 
 
 
