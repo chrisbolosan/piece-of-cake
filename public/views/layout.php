@@ -2,7 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/styles.css">
-	<title>&#127874; Piece of Cake</title>
+	<title>Piece of Cake</title>
+	<link rel="icon" href="images/tab_icon.png">
 </head>
 <body>
 
