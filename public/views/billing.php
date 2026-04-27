@@ -2,15 +2,11 @@
 session_start();
 require_once __DIR__ . '/../includes/config.php';
 
-// Cart validation
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-    header("Location: cart.php");
+    header("Location: index.php?page=cart");
     exit;
 }
 
-// Total Calculation
-$processed = false;
-$orderID = null;
 $total = 0;
 
 foreach ($_SESSION['cart'] as $id => $qty) {
@@ -20,7 +16,9 @@ foreach ($_SESSION['cart'] as $id => $qty) {
     $total += $row['BasePrice'] * $qty;
 }
 
-// Checkout process
+$processed = false;
+$orderID = null;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name     = $_POST['name'];
     $address  = $_POST['address'];
@@ -32,22 +30,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $exp      = $_POST['exp'];
     $cvv      = $_POST['cvv'];
 
-    $stmt = $pdo->prepare("INSERT INTO Orders (CustomerName, Address, City, State, Zip, CardName, CardNumber, Expiration, CVV, TotalAmount, Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Processing')");
-    $stmt->execute([$name, $address, $city, $state, $zip, $cardname, $cardnum, $exp, $cvv, $total]);
+    $stmt = $pdo->prepare("INSERT INTO PAYMENT (Method, Amount, CardholderName, CardLastFour) VALUES ('Card', ?, ?, ?)");
+    $stmt->execute([$total, $cardname, substr($cardnum, -4)]);
+    $paymentID = $pdo->lastInsertId();
+
+    $stmt = $pdo->prepare("INSERT INTO DESTINATION (StreetAddress, ZIP, City, State) VALUES (?, ?, ?, ?)");
+    $stmt->execute([$address, $zip, $city, $state]);
+    $addressID = $pdo->lastInsertId();
+
+    $stmt = $pdo->prepare("INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes) VALUES (1, ?, ?, ?)");
+    $stmt->execute([$paymentID, $addressID, $name]);
     $orderID = $pdo->lastInsertId();
 
     foreach ($_SESSION['cart'] as $id => $qty) {
-        $stmt = $pdo->prepare("INSERT INTO OrderItems (OrderID, ProductID, Quantity) VALUES (?, ?, ?)");
-        $stmt->execute([$orderID, $id, $qty]);
+    $stmt = $pdo->prepare("
+        INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity)
+        VALUES (?, ?, ?)
+        ON DUPLICATE KEY UPDATE Quantity = Quantity + VALUES(Quantity)
+    ");
+    $stmt->execute([$orderID, $id, $qty]);
     }
 
-    // Cart Reset
-    $_SESSION['cart'] = [];
 
+    $_SESSION['cart'] = [];
     $processed = true;
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>

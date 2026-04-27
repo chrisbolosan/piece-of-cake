@@ -11,13 +11,18 @@
 
         <h3>$<?=number_format((float)$cake['BasePrice'],2)?></h3>
 
-        <form method="post">
-            <label>Notes:</label><br>
-            <textarea name="notes" rows="5" cols="40" placeholder="Enter any cake notes here..."></textarea><br><br>
+    <form method="post" action="index.php?page=cart&action=add">
+        <input type="hidden" name="product_id" value="<?= $cake['CakeID'] ?>">
 
-            <button type="submit">Add to Cart</button>
-        </form>
+        <label>Quantity:</label><br>
+        <input type="number" name="quantity" value="1" min="1"><br><br>
+
+        <label>Notes:</label><br>
+        <textarea name="notes" rows="5" cols="40" placeholder="Enter any cake notes here..."></textarea><br><br>
+
+        <button type="submit">Add to Cart</button>
+    </form>
+
     </div>
-
 </div>
 </html>

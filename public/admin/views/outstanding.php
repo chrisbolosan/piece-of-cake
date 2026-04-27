@@ -1,6 +1,6 @@
 <h2>Outstanding Orders</h2>
 
-<table>
+<table border="1">
 	<tr>
 		<th>OrderID</th>
 		<th>Customer</th>

@@ -129,6 +129,9 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		transition: transform 0.2s, box-shadow 0.2s;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
 	}
 	.stat-card:hover {
 		transform: translateY(-5px);

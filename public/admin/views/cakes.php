@@ -2,7 +2,7 @@
 
 <a href="?page=cake_form">+ Add Cake</a>
 
-<table>
+<table border="1">
 	<tr>
 		<th></th>
 		<th></th>
