@@ -5,7 +5,7 @@ $prepared = $pdo->query("
 	SELECT O.*, C.Name
 	FROM ORDERS O
 	JOIN CUSTOMER C ON O.CustomerID = C.CustomerID
-	WHERE O.OrderStatus != 'Completed'
+	WHERE O.OrderStatus != 'Delivered'
 	ORDER BY O.TimeDatePlaced ASC
 ");
 
