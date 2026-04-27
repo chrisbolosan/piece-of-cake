@@ -49,6 +49,9 @@
 
 	<label>Stock:</label>
 	<input type="number" name="stock" min="0" step="1" value="<?= $cake['NumInStock'] ?? 0?>" required>
-
+	<!-- image -->
+	<label> Current Image:</label>
+	<img src="../<?= $cake['Img'] ?? 'comingsoon.png' ?>" alt="cake image" width="100" style="border-radius: 5px; margin-bottom: 10px;"/>
+	<input type="hidden" name="img" value="<?= $cake['Img'] ?? 'comingsoon.png' ?>">  
 	<button type="submit">Save</button>
 </form>
