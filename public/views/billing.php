@@ -19,6 +19,16 @@ foreach ($_SESSION['cart'] as $id => $qty) {
     $total += $row['BasePrice'] * $qty;
 }
 
+$discount = 0;
+$promoUsed = false;
+
+if(isset($_POST['promo']) && strtoupper(trim($_POST['promo'])) == "URMOM") {
+    $discount = $total * 0.15;
+    $promoUsed = true;
+}
+
+$finalTotal = $total - $discount;
+
 $processed = false;
 $orderID = null;
 
@@ -34,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cvv      = $_POST['cvv'];
 
     $stmt = $pdo->prepare("INSERT INTO PAYMENT (Method, Amount, CardholderName, CardLastFour) VALUES ('Card', ?, ?, ?)");
-    $stmt->execute([$total, $cardname, substr($cardnum, -4)]);
+    $stmt->execute([$finalTotal, $cardname, substr($cardnum, -4)]);
     $paymentID = $pdo->lastInsertId();
 
     $stmt = $pdo->prepare("INSERT INTO DESTINATION (StreetAddress, ZIP, City, State) VALUES (?, ?, ?, ?)");
@@ -79,7 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php if (!$processed): ?>
 
 <h1>Checkout</h1>
-<h3>Total: $<?= number_format($total, 2) ?></h3>
+<h3>Subtotal: $<?= number_format($total, 2) ?></h3>
+
+<?php if($promoUsed): ?>
+    <h3 style="color:green;">Promo Applied: -$<?= number_format($discount, 2) ?></h3>
+<?php endif; ?>
 
 <form method="post">
     <h2>Shipping Information</h2>
@@ -95,6 +109,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="text" name="exp" placeholder="Expiration Date" required><br>
     <input type="text" name="cvv" placeholder="Fake CVV" required><br>
 
+    <h2>Promo Code</h2>
+    <input type="text" name="promo" placehonder="Enter Promo Code Here"><br>
+
     <button type="submit">Place Order</button>
 </form>
 
@@ -102,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <h1>Order Placed</h1>
 <p>Your order number is <?= $orderID ?>.</p>
-<p>Total Paid: $<?= number_format($total, 2) ?></p>
+<p>Total Paid: $<?= number_format($finalTotal, 2) ?></p>
 <p>Status: Processing</p>
 
 <?php endif; ?>
