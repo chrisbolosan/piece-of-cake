@@ -5,6 +5,13 @@
 
 	<label>Flavor:</label>
 	<input type="text" name="flavor" value="<?= htmlspecialchars($cake['Flavor'] ?? '', ENT_QUOTES, 'UTF-8') ?>" required>
+	<datalist id="flavor-options">
+		<option value="Chocolate">
+		<option value="Vanilla">
+		<option value="Red Velvet">
+		<option value="Strawberry">
+		<option value="Carrot">
+	</datalist>
 	<br>
 
 	<label>Size:</label>
@@ -17,6 +24,12 @@
 
 	<label>Frosting:</label>
 	<input type="text" name="frosting" value="<?= $cake['Frosting'] ?? ''?>" required>
+	<datalist id="frosting-options">
+		<option value="Chocolate Buttercream">
+		<option value="Vanilla Buttercream">
+		<option value="Cream Cheese">
+		<option value="Whipped Cream">
+	</datalist>
 	<br>
 
 	<label>Stock:</label>
