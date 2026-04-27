@@ -33,15 +33,15 @@
 	margin: 25px 0;
 }
 
-.progress-bar::before {
-	content: '';
+.progress-line {
 	position: absolute;
 	top: 12px;
 	left: 0;
-	right: 0;
 	height: 4px;
-	background: #eee;
+	background: #4CAF50;
 	z-index: 0;
+	width: 0%;
+	transition: width 0.5s ease-in-out;
 }
 
 .step {
@@ -61,12 +61,18 @@
 
 .step.active .circle {
 	background: #4CAF50; 
+	box-shadow: 0 0 0 4px rgba(76,175,80,0.2);
 }
 
 .label {
 	font-size: 12px;
 	margin-top: 6px;
 }
+.status-processing { color: orange; }
+.status-shipped { color: blue; }
+.status-delivered { color: green; }
+.status-ready { color: purple; }
+
 </style>
 
 <div class="track-container">
@@ -88,8 +94,12 @@
 
 			<h3> Order # <?= $order['OrderID'] ?></h3>
 
-			<p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
-			
+			<p>
+				<strong>Status:</strong> 
+				<span class="status-<?= strtolower(str_replace(' ', '-', $order['OrderStatus'])) ?>">
+				<?= $order['OrderStatus'] ?>
+				</span>
+			</p>	
 			<!-- VISUAL TRACKER -->
 			
 			<?php
@@ -102,9 +112,13 @@
 			}
 
 			$currentIdx = array_search($status, $steps);
+			if ($currentIdx === false) $currentIdx = 0;
+			$totalSteps = count($steps) - 1;
+			$progressPercentage = ($currentIdx / $totalSteps) * 100;
 			?>
 			
 			<div class="progress-bar">
+				<div class="progress-line" style="width: <?= $progressPercentage ?>%"></div>
 			<?php foreach($steps as $idx => $step): ?>
 				<div class="step <?= $idx <= $currentIdx ? 'active' : '' ?>">
 				<div class="circle"></div> 
