@@ -13,6 +13,7 @@
 		<option value="Carrot">
 	</datalist>
 	<br>
+	<br>
 
 	<label>Size:</label>
 	<br>
@@ -31,7 +32,7 @@
 	<br>
 
 	<label>Price:</label>
-	<input type="text" name="price" value="<?= $cake['BasePrice'] ?? ''?>" required>
+	<input type="number" name="price" step="0.01" placeholder="0.00" min="0" value="<?= $cake['BasePrice'] ?? ''?>" required>
 	<br>
 
 	<label>Frosting:</label>
@@ -42,6 +43,7 @@
 		<option value="Cream Cheese">
 		<option value="Whipped Cream">
 	</datalist>
+	<br>
 	<br>
 
 	<label>Stock:</label>
