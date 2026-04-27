@@ -8,7 +8,7 @@ switch ($action) {
     case 'add':
         add_to_cart();
         break;
-
+         
     case 'remove':
         remove_from_cart();
         break;
@@ -144,7 +144,16 @@ function show_cart() {
         $line = $p['BasePrice'] * $qty;
         $total += $line;
 
-        echo htmlspecialchars($p['Flavor']) . " — Qty: $qty — $" . number_format($line, 2) . "<br>";
+        echo '
+        <form method="post" action="index.php?page=cart&action=update" style="margin-bottom:10px;">
+            ' . htmlspecialchars($p['Flavor']) . ' — 
+            <input type="hidden" name="product_id" value="' . $id . '">
+            Qty: <input type="number" name="quantity" value="' . $qty . '" min="0" style="width:60px;">
+            <button type="submit">Update</button>
+            <a href="index.php?page=cart&action=remove&id=' . $id . '">Remove</a>
+        </form>
+        ';
+
     }
 
     echo "<br>Total: $" . number_format($total, 2);

@@ -2,6 +2,8 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/styles.css">
+	<title>Piece of Cake</title>
+	<link rel="icon" href="images/tab_icon.png">
 </head>
 <body>
 
