@@ -52,6 +52,6 @@
 	<!-- image -->
 	<label> Current Image:</label>
 	<img src="../<?= $cake['Img'] ?? '/images/comingsoon.png' ?>" alt="cake image" width="100" style="border-radius: 5px; margin-bottom: 10px;"/>
-	<input type="hidden" name="img" value="<?= $cake['Img'] ?? 'comingsoon.png' ?>">  
+	<input type="hidden" name="img" value="<?= $cake['Img'] ?? '/images/comingsoon.png' ?>">  
 	<button type="submit">Save</button>
 </form>
