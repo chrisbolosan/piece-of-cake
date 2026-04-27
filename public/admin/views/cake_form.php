@@ -18,7 +18,7 @@
 	<br>
 
 	<select name="size" required>
-		<option value="" disabled <?= !isset['Size']) ? 'selected' : '' ?>> Select Size </option>
+		<option value="" disabled <?= !isset($cake['Size']) ? 'selected' : '' ?>> Select Size </option>
 		<?php
 		$sizes = ['6-inch', '8-inch', '10-inch', '12-inch'];
 		foreach ($sizes as $s) {
