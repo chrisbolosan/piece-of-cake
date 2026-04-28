@@ -180,7 +180,7 @@ function show_cart() {
 
     }
 
-    echo "<h3 style="text-align:center; color:#1e2366;">Total: $" . number_format($total, 2) . "</h3>";
+    echo '<h3 style="text-align:center; color:#1e2366;">Total: $' . number_format($total, 2) . '</h3>';
 
     echo '
         <div style="text-align:center; margin-top:20px;">
