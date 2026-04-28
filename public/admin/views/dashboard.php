@@ -70,7 +70,25 @@ try {
 <script>
 const ordersByDay = <?= json_encode($ordersByDay) ?>;
 
+function initCharts()
+{
+	//Orders instantiate the new chart
+	//More here :) https://www.chartjs.org/docs/latest/developers/charts.html
+	new Chart(document.getElementById('ordersChart'),
+	{
+		type: 'line',
+		data:
+		{
+			labels: ordersByDay.map(e => e.order_date),
+			datasets: [{
+				label: 'Orders',
+				data: ordersByDay.map(e=>e.order_count)
+				}]
+		}
+	});
+}
 
+window.onload = initCharts;
 </script>
 </body>
 </html>
