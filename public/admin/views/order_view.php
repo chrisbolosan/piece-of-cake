@@ -1,36 +1,37 @@
 <h2>Order #<?= $order['OrderID'] ?></h2>
 
-<p><strong>Status:</strong> <?= $order['OrderStatus'] ?></p>
-<p><strong>Type:</strong> <?= $order['FulfillmentType'] ?></p>
-<p><strong>Placed:</strong> <?= $order['TimeDatePlaced'] ?></p>
-<p><strong>Delivery:</strong> <?= $order['TimeDateDelivery'] ?? 'N/A' ?></p>
-<p><strong>Notes:</strong> <?= $order['Notes'] ?? 'None' ?></p>
+<p><strong>Status:</strong> <?= htmlspecialchars($order['OrderStatus']) ?></p>
+<p><strong>Type:</strong> <?= htmlspecialchars($order['FulfillmentType']) ?></p>
+<p><strong>Placed:</strong> <?= htmlspecialchars($order['TimeDatePlaced']) ?></p>
+<p><strong>Delivery:</strong> <?= htmlspecialchars($order['TimeDateDelivery'] ?? 'N/A') ?></p>
+<p><strong>Notes:</strong> <?= htmlspecialchars($order['Notes'] ?? 'None') ?></p>
 
 <h3>Customer</h3>
-<p><?= $order['Name'] ?> (<?= $order['Email'] ?>)</p>
+<p><?= htmlspecialchars($order['Name']) ?> (<?= htmlspecialchars($order['Email']) ?>)</p>
 
 <h3>Delivery Address</h3>
 <p>
-	<?= $order['StreetAddress'] ?>,
-	<?= $order['City'] ?>, <?= $order['State'] ?> <?= $order['ZIP'] ?>
+	<?= htmlspecialchars($order['StreetAddress']) ?>,<br>
+	<?= htmlspecialchars($order['City']) ?>, <?= htmlspecialchars($order['State']) ?> <?= htmlspecialchars($order['ZIP']) ?>
+	
 </p>
 
 <h3>Items</h3>
 
 <?php while ($item = $items->fetch(PDO::FETCH_ASSOC)): ?>
 	<p>
-		<?= $item['Flavor'] ?> (<?= $item['Size'] ?>)
-		x<?= $item['Quantity'] ?>
+		<strong><?= htmlspecialchars($item['Flavor']) ?></strong> (<?= htmlspecialchars($item['Size']) ?>)
+		x<?= (int)$item['Quantity'] ?>
 	</p>
 
 	<?php if ($item['UserMessage']): ?>
-		<p>Message: <?= $item['UserMessage'] ?></p>
+		<p>Message: <?= htmlspecialchars($item['UserMessage']) ?></p>
 	<?php endif; ?>
 <?php endwhile; ?>
 <br>
 
 <form method="POST" action="actions/update_order.php" onsubmit="return validateForm()">
-	<input type="hidden" name="order_id" value="<?= $id ?>">
+	<input type="hidden" name="order_id" value="<?= (int)$order['OrderID'] ?>">
 <select name="status">
 
 <?php if ($order['FulfillmentType'] === 'Pickup'): ?>
@@ -71,7 +72,7 @@
 <script>
 //javascript handle visibility
 function handleTrackingShow() {
-	const status = document.querySelector['[name="status"]').value;
+	const status = document.querySelector('[name="status"]').value;
 	const type = "<?= $order['FulfillmentType'] ?>";
 	const tracking = document.getElementById('tracking-wrapper');
 
@@ -88,11 +89,11 @@ function handleTrackingShow() {
 }
 
 function validateForm() {
-	const status = document.querySelector['[name="status"]').value;
+	const status = document.querySelector('[name="status"]').value;
 	const type = "<?= $order['FulfillmentType'] ?>";
 	const tracking = document.querySelector('[name="tracking"]').value.trim();
 
-	if (type === 'Delivery' && status = 'Shipped' && tracking === '') {
+	if (type === 'Delivery' && status === 'Shipped' && tracking === '') {
 		alert ('Tracking number required when marking order as Shipped.');
 		return false;
 	} 
