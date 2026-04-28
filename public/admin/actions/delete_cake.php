@@ -1,9 +1,6 @@
 <?php
 require_once '../../includes/config.php';
 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
 $id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 if ($id > 0)
