@@ -13,7 +13,7 @@ $resultsFulfillment->execute([$id]);
 $type=$resultsFulfillment->fetchColumn();
 
 if ($type=='Pickup') {
-	$tracking == null;
+	$tracking = null;
 }
 
 if ($type === 'Delivery' && $status === 'Shipped' && empty($tracking)) {
@@ -32,5 +32,5 @@ $prepared = $pdo->prepare("
 $prepared->execute([$status, $tracking, $delivery, $notes, $id]);
 
 // Redirect to specific order id
-header("Location: ../?page=order_view&id=" . $id);
+header("Location: ../index.php?page=order_view&id=" . $id);
 exit;
