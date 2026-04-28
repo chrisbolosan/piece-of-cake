@@ -25,8 +25,8 @@
 	<td><?= $row['NumInStock'] ?></td>
 	<td>
 		<a href="?page=cake_form&id=<?= $row['CakeID'] ?>">Edit</a>
-		<a href="actions/delete_cake.php?id=<?= $row['CakeID'] ?>"
-			onclick="return confirm('Are you sure you want to delete the <?= htmlspecialchars($row['Flavor']) ?> cake?');"	
+		<a href="actions/delete_cake.php?id=<?= $row['CakeID'] ?>" 
+			onclick="return confirm('Are you sure you want to delete the <?= htmlspecialchars($row['Flavor'], ENT_QUOTES) ?> cake?');" 
 			style="color:red;">
 			Delete
 		</a>
