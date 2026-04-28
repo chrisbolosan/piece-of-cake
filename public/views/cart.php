@@ -160,7 +160,15 @@ function show_cart() {
 
     }
 
-    echo "<br>Total: $" . number_format($total, 2);
+    echo "<br><h3>Total: $" . number_format($total, 2) . "</h3>";
+
+    echo '
+        <div style="margin-top:20px;">
+            <a href="index.php?page=cart&action=checkout">
+            <button style="product-details button">Proceed to Checkout</button>
+            </a>
+        </div>
+       ';
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
