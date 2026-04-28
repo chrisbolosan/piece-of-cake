@@ -30,7 +30,7 @@
 <?php endwhile; ?>
 <br>
 
-<form method="POST" action="actions/update_order.php" onsubmit="return validateForm()">
+<form method="POST" action="actions/update_order.php">
 	<input type="hidden" name="order_id" value="<?= (int)$order['OrderID'] ?>">
 <select name="status">
 
