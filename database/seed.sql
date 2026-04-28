@@ -68,7 +68,15 @@ INSERT INTO PAYMENT (Method, Amount, PaymentStatus, CardholderName, CardLastFour
 ('Card', 29.99, 'Completed', 'John Doe', '5678'),
 ('Card', 62.98, 'Processing', 'James Cameron', '4321'),
 ('Card', 48.99, 'Completed', 'Sarah Connor', '2222'),
-('Card', 59.99, 'Completed', 'Tony Stark', '4444');
+('Card', 59.99, 'Completed', 'Tony Stark', '4444'),
+('Card', 72.99, 'Completed', 'Chris Bolosan', '1234'),
+('Card', 18.99, 'Completed', 'John Doe', '5678'),
+('Card', 120.50, 'Completed', 'Tony Stark', '4444'),
+('Card', 45.00, 'Completed', 'Sarah Connor', '2222'),
+('Card', 89.99, 'Completed', 'James Cameron', '4321'),
+('Card', 15.99, 'Completed', 'John Doe', '5678'),
+('Card', 200.00, 'Completed', 'Tony Stark', '4444');
+
 -- ORDERS
 INSERT INTO ORDERS 
 (CustomerID, PaymentID, AddressID, AdminID, TimeDatePlaced, TimeDateDelivery, OrderStatus, TrackingNumber, FulfillmentType, Notes)
@@ -103,7 +111,19 @@ VALUES
 
 (1,1,1,1,'2026-04-21 16:20:00','2026-04-29 18:00:00','Processing','TRK10022','Delivery','last minute order'),
 (4,4,1,1,'2026-04-10 12:00:00','2026-04-11 15:00:00','Delivered','TRK10023','Delivery','first order'),
-(5,5,2,2,'2026-04-11 14:00:00','2026-04-12 16:00:00','Delivered','TRK10024','Delivery','first order');
+(5,5,2,2,'2026-04-11 14:00:00','2026-04-12 16:00:00','Delivered','TRK10024','Delivery','first order'),
+(1,6,1,1,'2026-04-22 10:00:00','2026-04-23 14:00:00','Delivered','TRK20001','Delivery','repeat customer'),
+(2,7,2,1,'2026-04-22 12:30:00','2026-04-23 16:00:00','Shipped','TRK20002','Delivery','gift'),
+(3,8,3,2,'2026-04-23 09:15:00',NULL,'Processing','','Delivery','big event'),
+
+(4,9,1,1,'2026-04-24 11:00:00','2026-04-25 15:00:00','Delivered','TRK20004','Delivery','family order'),
+(5,10,2,2,'2026-04-25 14:45:00',NULL,'Processing','','Pickup','pickup soon'),
+
+(1,11,1,1,'2026-04-26 09:30:00','2026-04-27 13:00:00','Delivered','TRK20006','Delivery','BULK'),
+(2,12,2,1,'2026-04-26 13:00:00',NULL,'Processing','','Delivery','RUSH'),
+(3,13,3,2,'2026-04-27 15:10:00','2026-04-28 18:00:00','Shipped','TRK20008','Delivery','priority'),
+
+(5,14,2,2,'2026-04-27 16:00:00','2026-04-28 19:00:00','Delivered','TRK20009','Delivery','VIP add extra utensils!');
 
 -- ORDER ITEMS
 INSERT INTO ORDER_ITEM 
@@ -138,6 +158,15 @@ VALUES
 (23,2,1,NULL,NULL),
 (24,3,1,NULL,NULL),
 (25,1,1,NULL,NULL),
-(26,2,1,NULL,NULL);
+(26,2,1,NULL,NULL),
+(27,1,2,NULL,NULL),
+(28,5,1,NULL,NULL),
+(29,10,3,NULL,NULL),
+(30,8,1,NULL,NULL),
+(31,12,2,NULL,NULL),
+(32,15,4,NULL,NULL),
+(33,3,1,NULL,NULL),
+(34,6,2,NULL,NULL),
+(35,18,3,NULL,NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
