@@ -11,12 +11,12 @@
 
 	<?php while ($row = $prepared->fetch(PDO::FETCH_ASSOC)): ?>
 	<tr>
-		<td><?= $row['OrderID'] ?> </td>	
-		<td><?= $row['Name'] ?> </td>	
-		<td><?= $row['OrderStatus'] ?> </td>	
-		<td><?= $row['TimeDatePlaced'] ?> </td>	
+		<td><?= (int)$row['OrderID'] ?> </td>	
+		<td><?= htmlspecialchars($row['Name'], ENT_QUOTES, 'UTF-8') ?></td>    
+		<td><?= htmlspecialchars($row['OrderStatus'], ENT_QUOTES, 'UTF-8') ?></td>    
+		<td><?= htmlspecialchars($row['TimeDatePlaced'], ENT_QUOTES, 'UTF-8') ?></td>
 		<td>
-			<a href="?page=order_view&id=<?= $row['OrderID']?>">View</a>
+			<a href="?page=order_view&id=<?= (int)$row['OrderID']?>">View</a>
 		</td>
 	</tr>
 	<?php endwhile; ?>
