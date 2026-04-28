@@ -169,7 +169,7 @@ function show_cart() {
 
             <form method="post" action="index.php?page=cart&action=update" style="display:flex; align-items:center; gap:10px;">
                 <input type="hidden" name="product_id" value="' . $id . '">
-                <strong>Qty:</strong? <input type="number" name="quantity" value="' . $qty . '" min="0" style="width:60px; padding:5px;">
+                <strong>Qty:</strong> <input type="number" name="quantity" value="' . $qty . '" min="0" style="width:60px; padding:5px;">
                 
                 <button type="submit" class="main-button">Update</button>
 
