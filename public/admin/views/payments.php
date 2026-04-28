@@ -11,11 +11,13 @@
 	
 	<?php while ($row = $prepared->fetch(PDO::FETCH_ASSOC)): ?>
 	<tr>
-		<td><?= $row['OrderID'] ?> </td>	
-		<td>$<?= $row['Amount'] ?> </td>	
-		<td> <?= $row['PaymentStatus'] ?> </td>	
-		<td> <?= $row['Method'] ?> </td>	
-		<td>**** <?= $row['CardLastFour'] ?> </td>	
+		<td><?= (int)$row['OrderID'] ?> </td>	
+		<td>$<?= number_format((float)$row['Amount'], 2) ?></td>
+
+		<td><?= htmlspecialchars($row['PaymentStatus'] ?? 'Unknown', ENT_QUOTES, 'UTF-8') ?></td>    
+		<td><?= htmlspecialchars($row['Method'] ?? 'N/A', ENT_QUOTES, 'UTF-8') ?></td>    
+
+		<td>**** <?= htmlspecialchars($row['CardLastFour'] ?? '0000', ENT_QUOTES, 'UTF-8') ?></td>
 	</tr>
 	<?php endwhile; ?>	
 
