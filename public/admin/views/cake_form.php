@@ -37,7 +37,7 @@
 	<br>
 
 	<label>Frosting:</label>
-	<input type="text" name="frosting" list="frosting-options" value="<?= $cake['Frosting'] ?? ''?>" required>
+	<input type="text" name="frosting" list="frosting-options" value="<?= htmlspecialchars($cake['Frosting'] ?? '', ENT_QUOTES) ?>" required>
 	<datalist id="frosting-options">
 		<option value="Chocolate Buttercream">
 		<option value="Vanilla Buttercream">
@@ -52,6 +52,6 @@
 	<!-- image -->
 	<label> Current Image:</label>
 	<img src="../<?= $cake['Img'] ?? 'images/comingsoon.png' ?>" alt="cake image" width="100" style="border-radius: 5px; margin-bottom: 10px;"/>
-	<input type="hidden" name="img" value="<?= $cake['Img'] ?? 'images/comingsoon.png' ?>">  
+	<input type="hidden" name="img" value="<?= htmlspecialchars($cake['Img'] ?? 'images/comingsoon.png', ENT_QUOTES, 'UTF-8') ?>">
 	<button type="submit">Save</button>
 </form>
