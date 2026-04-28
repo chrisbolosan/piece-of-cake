@@ -6,20 +6,23 @@
 	<th>Customer</th>
 	<th>Status</th>
 	<th>Order Placed</th>
-	<th>Tracking</>
+	<th>Tracking</th>
 	<th>Actions</th>
 
 </tr>
 
 <?php while ($row = $prepared->fetch(PDO::FETCH_ASSOC)): ?>
 <tr>
-	<td><?= $row['OrderID'] ?></td>
-	<td><?= $row['Name'] ?></td>
-	<td><?= $row['OrderStatus'] ?></td>
-	<td><?= $row['TimeDatePlaced'] ?></td>
-	<td><?= $row['TrackingNumber'] ?? '-' ?></td>
+	<td><?= (int)$row['OrderID'] ?></td>
+	<td><?= htmlspecialchars($row['Name']) ?></td>
+	<td style="color: <?= $row['OrderStatus'] == 'Delivered' ? 'green' : 'orange' ?>;">
+		<?= htmlspecialchars($row['OrderStatus']) ?>
+	</td>
+	<td><?= htmlspecialchars($row['TimeDatePlaced']) ?></td>
+	<td><?= htmlspecialchars($row['TrackingNumber'] ?? '-') ?></td>
+	
 	<td>
-		<a href="?page=order_view&id=<?= $row['OrderID'] ?>">View</a>
+		<a href="?page=order_view&id=<?= (int)$row['OrderID'] ?>">View</a>
 	</td>
 </tr>
 <?php endwhile; ?>
