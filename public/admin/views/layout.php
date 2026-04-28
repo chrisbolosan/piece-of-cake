@@ -147,7 +147,7 @@
 
 <body>
 	<!--SIDEBAR -->
-	<?php include 'sidebar.php'; ?>
+	<?php include 'views/sidebar.php'; ?>
 
 <div class="main-content">
 	<?php include($view); ?>

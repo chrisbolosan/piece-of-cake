@@ -2,8 +2,10 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+
 $page = $_GET['page'] ?? 'dashboard';
 
+require_once 'includes/router.php';
 
 switch($page) {
 	
@@ -46,3 +48,5 @@ switch($page) {
 	default:
 		require 'controllers/404.php'; 
 }
+
+include 'views/layout.php';
