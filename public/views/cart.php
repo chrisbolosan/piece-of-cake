@@ -188,9 +188,7 @@ function show_cart() {
 
     echo '
         <div style="text-align:center; margin-top:20px;">
-            <a href="index.php?page=billing">
-            <button class="main-button">Proceed to Checkout</button>
-            </a>
+            <a href="index.php?page=billing" class="main-button;">Proceed to Checkout</a>
         </div>
        ';
 }
