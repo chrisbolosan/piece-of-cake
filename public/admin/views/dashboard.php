@@ -52,7 +52,25 @@ try {
 				</div>
 			</div>
 		</div>
-	</main>
+	<!-- Charts -->
+	<div class="charts-container">
+		<!--buttons-->
+		<div>
+			<h2> Analytics & Trends</h2>
+		</div>
 
+		<!--Orders Trend Chart -->
+		<div id="chart-orders">
+
+			<h3> Orders Last 7 Days</h3>
+			<canvas id="ordersChart"></canvas>
+		</div>
+	<div>
+	</main>
+<script>
+const ordersByDay = <?= json_encode($ordersByDay) ?>;
+
+
+</script>
 </body>
 </html>
