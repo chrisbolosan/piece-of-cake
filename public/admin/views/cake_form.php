@@ -32,7 +32,7 @@
 	<br>
 
 	<label>Price:</label>
-	<input type="number" name="price" step="0.01" placeholder="0.00" min="0" value="<?= $cake['BasePrice'] ?? ''?>" required>
+	<input type="number" name="price" step="0.01" placeholder="0.00" min="0" max="999999.99" value="<?= $cake['BasePrice'] ?? ''?>" required>
 	<br>
 	<br>
 
@@ -49,6 +49,8 @@
 
 	<label>Stock:</label>
 	<input type="number" name="stock" min="0" step="1" value="<?= $cake['NumInStock'] ?? 0?>" required>
+	<br>
+	<br>
 	<!-- image -->
 	<label> Current Image:</label>
 	<img src="../<?= $cake['Img'] ?? 'images/comingsoon.png' ?>" alt="cake image" width="100" style="border-radius: 5px; margin-bottom: 10px;"/>
