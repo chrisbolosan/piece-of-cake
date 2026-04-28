@@ -17,7 +17,7 @@ $ordersByDay = $pdo->query("
 		COALESCE(SUM(P.Amount), 0) as daily_revenue
 	FROM ORDERS O
 	LEFT JOIN PAYMENT P ON O.PaymentID = P.PaymentID
-	WHERE TimeDatePlaced >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+	WHERE TimeDatePlaced >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
 	GROUP BY DATE(TimeDatePlaced)
 	ORDER BY order_date ASC
 ")->fetchAll(PDO::FETCH_ASSOC);
