@@ -155,3 +155,16 @@ nav a:hover {
     padding-left: 20px;
     line-height: 1.8;
 }
+<<<<<<< HEAD
+=======
+
+.main-button {
+    background-color: #1e2366;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+>>>>>>> d18d9a5 (making the cart look pretty)

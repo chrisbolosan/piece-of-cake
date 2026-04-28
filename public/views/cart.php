@@ -79,11 +79,15 @@ function update_cart() {
 // Displays Checkout
 function show_checkout() {
     echo '
-        <form method="post" action="index.php?page=cart&action=place_order">
-            <input name="address" placeholder="Shipping Address">
-            <input name="billing" placeholder="Billing Info (fake)">
-            <button type="submit">Place Order</button>
-        </form>
+        <div class="card" style="max-width:500px; margin:40px auto; text-align:center;">
+            <h2>Checkout</h2>
+
+            <form method="post" action="index.php?page=cart&action=place_order">
+                <input name="address" placeholder="Shipping Address" style="width:90%; padding:10px; margin:10px;"><br>
+                <input name="billing" placeholder="Billing Info (fake)" style="width:90%; padding:10px; margin:10px;"><br>
+                <button type="submit" class="main-button">Place Order</button>
+            </form>
+        </div>
     ';
 }
 
@@ -121,7 +125,15 @@ function place_order() {
 
     $_SESSION['cart'] = [];
 
-    echo "Order placed!";
+    echo '
+        <div class="card" style=max-width:500px; margin:50px auto; text-align:center;">
+        <h2 style="color:#1e2366;">Thank You For Your Order!</h2>
+        <p>Your cakes are now being prepared.</p>
+        <a href="index.php">
+            <button class="main-button">Return Home</button>
+        </a>
+    </div>
+';
 }
 
 // Displays the cart 
@@ -130,8 +142,10 @@ function show_cart() {
 
     $cart = $_SESSION['cart'] ?? [];
 
+    echo '<h2 style="text-align:center; color:#1e2366;">Your Shopping Cart</h2>';
+
     if (empty($cart)) {
-        echo "Your cart is empty.";
+        echo "<p style='text-align:center;'>Your cart is empty.</p>";
         return;
     }
 
@@ -149,23 +163,33 @@ function show_cart() {
         $total += $line;
 
         echo '
-        <form method="post" action="index.php?page=cart&action=update" style="margin-bottom:10px;">
-            ' . htmlspecialchars($p['Flavor']) . ' — 
-            <input type="hidden" name="product_id" value="' . $id . '">
-            Qty: <input type="number" name="quantity" value="' . $qty . '" min="0" style="width:60px;">
-            <button type="submit">Update</button>
-            <a href="index.php?page=cart&action=remove&id=' . $id . '">Remove</a>
-        </form>
-        ';
+<div class="card" style="max-width:700px; margin:20px auto; display:flex; justify-content:space-between; align-items:center;">
+            
+    <div>
+        <h3 style="margin:0;">' . htmlspecialchars($p['Flavor']) . '</h3>
+        <p style="margin:5px 0;">$' . number_format($p['BasePrice'],2) . ' each</p>
+        <p style="margin:5px 0;">Subtotal: $' . number_format($line,2) . '</p>
+    </div>
+
+            <form method="post" action="index.php?page=cart&action=update" style="display:flex; align-items:center; gap:10px;">
+                <input type="hidden" name="product_id" value="' . $id . '">
+                <strong>Qty:</strong? <input type="number" name="quantity" value="' . $qty . '" min="0" style="width:60px; padding:5px;">
+                
+                <button type="submit" class="main-button">Update</button>
+
+                <a href="index.php?page=cart&action=remove&id=' . $id . '" 
+                style="color:#cc3366; font-weight:bold; text-decoration:none;">Remove</a>
+            </form>
+        </div>        ';
 
     }
 
-    echo "<br><h3>Total: $" . number_format($total, 2) . "</h3>";
+    echo "<h3 style="text-align:center; color:#1e2366;">Total: $" . number_format($total, 2) . "</h3>";
 
     echo '
-        <div style="margin-top:20px;">
-            <a href="index.php?page=cart&action=checkout">
-            <button style="product-details button">Proceed to Checkout</button>
+        <div style="text-align:center; margin-top:20px;">
+            <a href="index.php?page=billing">
+            <button class="main-button">Proceed to Checkout</button>
             </a>
         </div>
        ';
