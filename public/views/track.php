@@ -151,8 +151,7 @@
 			<div class="divider"></div>
 
 			<h4> Customer Name</h4>
-			<p><?= $order['Name'] ?> </p>
-
+			<p><?= htmlspecialchars($order['Name']) ?></p>
 			<div class="divider"></div>
 		
 			<h4> Payment</h4>	
