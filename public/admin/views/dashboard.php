@@ -62,7 +62,7 @@ try {
 		<!--Orders Trend Chart -->
 		<div id="chart-orders">
 
-			<h3> Orders Last 7 Days</h3>
+			<h3> Orders Last 30 Days</h3>
 			<canvas id="ordersChart"></canvas>
 		</div>
 	<div>

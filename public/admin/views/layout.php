@@ -137,6 +137,11 @@
 		transform: translateY(-5px);
 		box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 	}
+
+	/* === DASHBOARD CHARTS  ======= */
+	.chart-card canvas {
+		max-height: 400px;
+	}
 	</style>
 </head>
 
