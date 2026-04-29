@@ -14,4 +14,3 @@ if($id) {
 }
 
 $view = __DIR__ . '/../views/cake_form.php';
-include __DIR__ . '/../views/layout.php';

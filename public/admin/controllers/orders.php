@@ -11,5 +11,3 @@ $prepared = $pdo->query("
 ");
 
 $view = __DIR__ . '/../views/orders.php';
-
-include __DIR__ . '/../views/layout.php';

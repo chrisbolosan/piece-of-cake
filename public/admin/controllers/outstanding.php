@@ -10,4 +10,3 @@ $prepared = $pdo->query("
 ");
 
 $view = __DIR__ . '/../views/outstanding.php';
-include __DIR__ . '/../views/layout.php';

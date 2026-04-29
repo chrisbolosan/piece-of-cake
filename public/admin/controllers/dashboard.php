@@ -25,4 +25,3 @@ $ordersByDay = $pdo->query("
 
 $view = __DIR__ . '/../views/dashboard.php';
 
-include __DIR__ . '/../views/layout.php';
