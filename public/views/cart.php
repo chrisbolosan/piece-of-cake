@@ -121,6 +121,10 @@ function place_order() {
     $cart = $_SESSION['cart'];
 
     // Collects form data
+    $cust_name  = trim($_POST['cust_name']);
+    $cust_email = trim($_POST['cust_email']);
+    $cust_phone = trim($_POST['cust_phone']);
+
     $street = trim($_POST['street']);
     $apt    = trim($_POST['apt']);
     $city   = trim($_POST['city']);
@@ -151,6 +155,15 @@ function place_order() {
         $total += $p['BasePrice'] * $cart[$p['CakeID']];
     }
 
+    // Inserts into CUSTOMER
+    $stmt = $pdo->prepare("
+    INSERT INTO CUSTOMER (Name, Email, PhoneNum)
+    VALUES (?, ?, ?)
+    ");
+    $stmt->execute([$cust_name, $cust_email, $cust_phone]);
+    $customer_id = $pdo->lastInsertId();
+
+
     // Inserts into PAYMENT
     $stmt = $pdo->prepare("
         INSERT INTO PAYMENT (Method, Amount, PaymentStatus, CardholderName, CardLastFour)
@@ -161,12 +174,11 @@ function place_order() {
 
 
     // Inserts into ORDERS
-    $stmt = $pdo->prepare("
-        INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes)
-        VALUES (1, ?, ?, 'Order placed via checkout')
+   $stmt = $pdo->prepare("
+    INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes)
+    VALUES (?, ?, ?, ?)
     ");
-    $stmt->execute([$payment_id, $address_id]);
-    $order_id = $pdo->lastInsertId();
+    $stmt->execute([$customer_id, $payment_id, $address_id, "Order placed"]);
 
     // Inserts ORDER_ITEM rows
     $stmt = $pdo->prepare("
