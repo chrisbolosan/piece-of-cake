@@ -100,6 +100,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <h3>Total: $<?= number_format($finalTotal, 2) ?></h3>
 
 <form method="post">
+
+    <h2>Customer Information</h2>
+    <input type="text" name="cust_name" placeholder="Full Name" required style="width:95%; padding:10px; margin-bottom:10px;"><br>
+    <input type="email" name="cust_email" placeholder="Email" required style="width:95%; padding:10px; margin-bottom:10px;"><br>
+    <input type="text" name="cust_phone" placeholder="Phone Number" required style="width:95%; padding:10px; margin-bottom:10px;"><br>
+
     <h2>Shipping Information</h2>
     <input type="text" name="name" placeholder="Full Name" required style="width:95%; padding:10px; margin-bottom:10px;"><br>
     <input type="text" name="address" placeholder="Street Address" required style="width:95%; padding:10px; margin-bottom:10px;"><br>
