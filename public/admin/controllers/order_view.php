@@ -23,4 +23,3 @@ $items->execute([$id]);
 
 $view = __DIR__ . '/../views/order_view.php';
 
-include __DIR__ . '/../views/layout.php';

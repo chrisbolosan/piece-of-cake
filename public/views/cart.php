@@ -75,62 +75,137 @@ function update_cart() {
 // Displays Checkout
 function show_checkout() {
     echo '
-        <div class="card" style="max-width:500px; margin:40px auto; text-align:center;">
+        <div class="card" style="max-width:600px; margin:40px auto; text-align:center;">
             <h2>Checkout</h2>
 
             <form method="post" action="index.php?page=cart&action=place_order">
-                <input name="address" placeholder="Shipping Address" style="width:90%; padding:10px; margin:10px;"><br>
-                <input name="billing" placeholder="Billing Info (fake)" style="width:90%; padding:10px; margin:10px;"><br>
+
+                <h3>Shipping Address</h3>
+
+                <input name="street" placeholder="Street Address" required
+                       style="width:90%; padding:10px; margin:10px;"><br>
+
+                <input name="apt" placeholder="Apt / Unit (optional)"
+                       style="width:90%; padding:10px; margin:10px;"><br>
+
+                <input name="city" placeholder="City" required
+                       style="width:90%; padding:10px; margin:10px;"><br>
+
+                <input name="state" placeholder="State" required
+                       style="width:90%; padding:10px; margin:10px;"><br>
+
+                <input name="zip" placeholder="ZIP Code" required
+                       style="width:90%; padding:10px; margin:10px;"><br>
+
+                <h3>Billing Info</h3>
+
+                <input name="billing_name" placeholder="Cardholder Name" required
+                       style="width:90%; padding:10px; margin:10px;"><br>
+
+                <input name="billing_last4" placeholder="Last 4 Digits" maxlength="4" required
+                       style="width:90%; padding:10px; margin:10px;"><br>
+
                 <button type="submit" class="main-button">Place Order</button>
             </form>
         </div>
     ';
 }
 
+
 // Places the Order
 function place_order() {
     global $pdo;
 
-    $cart = $_SESSION['cart'] ?? [];
-    if (empty($cart)) return;
+    if (empty($_SESSION['cart'])) return;
 
-    $address = $_POST['address'];
-    $billing = $_POST['billing'];
+    $cart = $_SESSION['cart'];
 
-    
-    $ids = implode(',', array_keys($cart));
-    $stmt = $pdo->query("SELECT CakeID, BasePrice FROM CAKE WHERE CakeID IN ($ids)");
+    // Collects form data
+    $cust_name  = trim($_POST['cust_name']);
+    $cust_email = trim($_POST['cust_email']);
+    $cust_phone = trim($_POST['cust_phone']);
+
+    $street = trim($_POST['street']);
+    $apt    = trim($_POST['apt']);
+    $city   = trim($_POST['city']);
+    $state  = trim($_POST['state']);
+    $zip    = trim($_POST['zip']);
+
+    $billing_name  = trim($_POST['billing_name']);
+    $billing_last4 = trim($_POST['billing_last4']);
+
+    // Inserts into DESTINATION
+    $stmt = $pdo->prepare("
+        INSERT INTO DESTINATION (StreetAddress, AptNumber, ZIP, City, State)
+        VALUES (?, ?, ?, ?, ?)
+    ");
+    $stmt->execute([$street, $apt, $zip, $city, $state]);
+    $address_id = $pdo->lastInsertId();
+
+    // Calculates total
+    $ids = array_keys($cart);
+    $placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+    $stmt = $pdo->prepare("SELECT CakeID, BasePrice FROM CAKE WHERE CakeID IN ($placeholders)");
+    $stmt->execute($ids);
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    
     $total = 0;
     foreach ($products as $p) {
         $total += $p['BasePrice'] * $cart[$p['CakeID']];
     }
 
-    
-    $stmt = $pdo->prepare("INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes) VALUES (1, 1, 1, ?)");
-    $stmt->execute([$address]);
-    $order_id = $pdo->lastInsertId();
+    // Inserts into CUSTOMER
+    $stmt = $pdo->prepare("
+    INSERT INTO CUSTOMER (Name, Email, PhoneNum)
+    VALUES (?, ?, ?)
+    ");
+    $stmt->execute([$cust_name, $cust_email, $cust_phone]);
+    $customer_id = $pdo->lastInsertId();
 
-    
-    foreach ($cart as $id => $qty) {
-        $stmt = $pdo->prepare("INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity) VALUES (?, ?, ?)");
-        $stmt->execute([$order_id, $id, $qty]);
+
+    // Inserts into PAYMENT
+    $stmt = $pdo->prepare("
+        INSERT INTO PAYMENT (Method, Amount, PaymentStatus, CardholderName, CardLastFour)
+        VALUES ('Card', ?, 'Processing', ?, ?)
+    ");
+    $stmt->execute([$total, $billing_name, $billing_last4]);
+    $payment_id = $pdo->lastInsertId();
+
+
+    // Inserts into ORDERS
+   $stmt = $pdo->prepare("
+    INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes)
+    VALUES (?, ?, ?, ?)
+    ");
+    $stmt->execute([$customer_id, $payment_id, $address_id, "Order placed"]);
+
+    // Inserts ORDER_ITEM rows
+    $stmt = $pdo->prepare("
+        INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity)
+        VALUES (?, ?, ?)
+    ");
+
+    foreach ($cart as $cake_id => $qty) {
+        $stmt->execute([$order_id, $cake_id, $qty]);
     }
 
+    // Clears cart
     $_SESSION['cart'] = [];
 
+   
+    // Confirmation message
     echo '
-        <div class="card" style=max-width:500px; margin:50px auto; text-align:center;">
-        <h2 style="color:#1e2366;">Thank You For Your Order!</h2>
-        <p>Your cakes are now being prepared.</p>
-        <a href="index.php">
-            <button class="main-button">Return Home</button>
-        </a>
-    </div>
-';
+        <div class="card" style="max-width:500px; margin:50px auto; text-align:center;">
+            <h2 style="color:#1e2366;">Thank You For Your Order!</h2>
+            <p>Your cakes are now being prepared.</p>
+            <a href="index.php">
+                <button class="main-button">Return Home</button>
+            </a>
+        </div>
+    ';
 }
+
 
 // Displays the cart 
 function show_cart() {

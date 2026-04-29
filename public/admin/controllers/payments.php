@@ -8,5 +8,3 @@ $prepared = $pdo->query("
 ");
 
 $view = __DIR__ . '/../views/payments.php';
-
-include __DIR__ . '/../views/layout.php';
