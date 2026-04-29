@@ -19,7 +19,7 @@
 </header>
 
 <div class="promo">
-	<p>Enter code <strong>URMOM</strong> at checkout for a Mother's Day discount!</p>
+	<p>Enter <strong>URMOM</strong> at checkout for a Mother's Day discount 15% off!</p>
 </div>
 
 
