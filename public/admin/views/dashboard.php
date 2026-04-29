@@ -67,6 +67,17 @@ try {
 			</div>
 		</div>
 	<div>
+
+	<br>
+	<br>
+
+	<!-- revenue -->
+	<div id="chart-revenue" class="chart-wrapper">
+		<div class="chart-card">
+			<h3>Revenue Over Last 7 Days</h3>
+			<canvas id="revenueChart"></canvas>
+		</div>
+	</div>
 	</main>
 <script>
 const ordersByDay = <?= json_encode($ordersByDay) ?>;
@@ -84,9 +95,20 @@ function initCharts()
 			datasets: [{
 				label: 'Orders',
 				data: ordersByDay.map(e=>e.order_count)
-				}]
+			}]
 		}
 	});
+
+	new Chart(document.getElementById('revenueChart'), {
+		type: 'line',
+		data: {
+			labels: ordersByDay.map(d => d.order_date),
+			datasets: [{
+				label: 'Revenue',
+				data: ordersByDay.map(d => d.daily_revenue)
+			}]
+		}
+	});	
 }
 
 window.onload = initCharts;
