@@ -11,7 +11,7 @@ $shipped = $pdo->query("SELECT * FROM ORDERS WHERE OrderStatus = 'Shipped'")->fe
 
 // https://www.w3schools.com/sql/func_mysql_date_sub.asp
 $ordersByDay = $pdo->query("
-	SELEC
+	SELECT
 		DATE(TimeDatePlaced) as order_date,
 		COUNT(*) as order_count,
 		COALESCE(SUM(P.Amount), 0) as daily_revenue
