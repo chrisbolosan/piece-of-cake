@@ -11,7 +11,7 @@ $shipped = $pdo->query("SELECT * FROM ORDERS WHERE OrderStatus = 'Shipped'")->fe
 
 // https://www.w3schools.com/sql/func_mysql_date_sub.asp
 $ordersByDay = $pdo->query("
-	SELECT
+	SELEC
 		DATE(TimeDatePlaced) as order_date,
 		COUNT(*) as order_count,
 		COALESCE(SUM(P.Amount), 0) as daily_revenue
@@ -20,8 +20,16 @@ $ordersByDay = $pdo->query("
 	WHERE TimeDatePlaced >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
 	GROUP BY DATE(TimeDatePlaced)
 	ORDER BY order_date ASC
+
 ")->fetchAll(PDO::FETCH_ASSOC);
 
+$totalRevenue = $pdo->query("
+	SELECT COALESCE(SUM(p.Amount), 0) 
+	FROM ORDERS o 
+	JOIN PAYMENT p ON o.PaymentID = p.PaymentID 
+	WHERE p.PaymentStatus = 'Completed'
+
+")->fetchColumn();
 
 $view = __DIR__ . '/../views/dashboard.php';
 
