@@ -2,9 +2,6 @@
 session_start();
 require_once __DIR__ . '/../includes/config.php';
 
-echo __FILE__;
-exit;
-
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     header("Location: index.php?page=cart");
     exit;
@@ -53,11 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Cart Reset
     $_SESSION['cart'] = [];
-
-    $_SESSION['cart'] = [];
     $processed = true;
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -120,4 +114,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </body>
 </html>
-

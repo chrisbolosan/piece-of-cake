@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 2ec9c97 (testing)
 <?php
 
 $action = $_GET['action'] ?? 'view';
@@ -54,7 +50,7 @@ function add_to_cart() {
     $current = $_SESSION['cart'][$id] ?? 0;
 
     // New desired quantity
-    $newQtr = $current + $qty; 
+    $newQty = $current + $qty; 
     
     // Enforce stock limit
     if ($newQty > $stock) {
@@ -197,6 +193,9 @@ function place_order() {
     VALUES (?, ?, ?, ?)
     ");
     $stmt->execute([$customer_id, $payment_id, $address_id, "Order placed"]);
+    
+    // Capture Order ID
+    $order_id = $pdo->lastInsertId();
 
     // Inserts ORDER_ITEM rows
     $stmt = $pdo->prepare("
@@ -211,7 +210,7 @@ function place_order() {
     // Clears cart
     $_SESSION['cart'] = [];
 
-   
+    
     // Confirmation message
     echo '
         <div class="card" style="max-width:500px; margin:50px auto; text-align:center;">
@@ -253,7 +252,7 @@ function show_cart() {
 
         echo '
 <div class="card" style="max-width:700px; margin:20px auto; display:flex; justify-content:space-between; align-items:center;">
-            
+           
     <div>
         <h3 style="margin:0;">' . htmlspecialchars($p['Flavor']) . '</h3>
         <p style="margin:5px 0;">$' . number_format($p['BasePrice'],2) . ' each</p>
@@ -279,25 +278,6 @@ function show_cart() {
         <div style="text-align:center; margin-top:20px;">
             <a href="index.php?page=billing" class="main-button;">Proceed to Checkout</a>
         </div>
-       ';
+      ';
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<h1>Your Cart</h1>
-
-<?php if (empty($cart)): ?>
-    <p>Your cart is empty.</p>
-<?php else: ?>
-    <ul>
-        <?php foreach ($cart as $id => $qty): ?>
-            <li>Product ID: <?= $id ?> — Quantity: <?= $qty ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
->>>>>>> e7d664a (testing)
-=======
-
->>>>>>> 2ec9c97 (testing)
-=======
->>>>>>> 1a38dd1 (im an idiot)
+?>
