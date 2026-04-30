@@ -32,18 +32,32 @@ switch ($action) {
 
 // Adds the products to cart in the specified quantities
 function add_to_cart() {
+    global $pdo;
+
     $id = intval($_POST['product_id']);
     $qty = intval($_POST['quantity']);
+
+    // Get stock from database
+    $stmt = $pdo->prepare("SELECT NumInStock FROM CAKE WHERE CakeID = ?");
+    $stmt->execute([$id]); 
+    $stock = $stmt->fetchColumn();
 
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
-    if (isset($_SESSION['cart'][$id])) {
-        $_SESSION['cart'][$id] += $qty;
-    } else {
-        $_SESSION['cart'][$id] = $qty;
+    // Current quantity already in cart
+    $current = $_SESSION['cart'][$id] ?? 0;
+
+    // New desired quantity
+    $newQtr = $current + $qty; 
+    
+    // Enforce stock limit
+    if ($newQty > $stock) {
+        $newQty = $stock;
     }
+
+    $_SESSION['cart'][$id] = $newQty;
 
     header("Location: index.php?page=cart");
     exit;

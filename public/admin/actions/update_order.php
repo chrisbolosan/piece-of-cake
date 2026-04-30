@@ -31,6 +31,15 @@ $prepared = $pdo->prepare("
 
 $prepared->execute([$status, $tracking, $delivery, $notes, $id]);
 
+$current = $pdo->prepare("SELECT OrderStatus FROM ORDERS WHERE OrderID=?");
+$current->execute([$id]);
+$currentStatus = $current->fetchColumn();
+
+if($currentStatus !== 'Processing' && $status === 'Processing')
+{
+	die("Invalid status change");
+}
+
 // Redirect to specific order id
 header("Location: ../index.php?page=order_view&id=" . $id);
 exit;
