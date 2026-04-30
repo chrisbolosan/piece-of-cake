@@ -30,27 +30,77 @@ $processed = false;
 $orderID = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Customer Info
+    $cust_name  = $_POST['cust_name'];
+    $cust_email = $_POST['cust_email'];
+    $cust_phone = $_POST['cust_phone'];
+
+    // Shipping Info
     $name     = $_POST['name'];
     $address  = $_POST['address'];
     $city     = $_POST['city'];
     $state    = $_POST['state'];
     $zip      = $_POST['zip'];
+
+    // Billing Info
     $cardname = $_POST['cardname'];
     $cardnum  = $_POST['cardnum'];
     $exp      = $_POST['exp'];
     $cvv      = $_POST['cvv'];
 
-    $stmt = $pdo->prepare("INSERT INTO PAYMENT (Method, Amount, CardholderName, CardLastFour) VALUES ('Card', ?, ?, ?)");
+    // INSERT CUSTOMER
+    $stmt = $pdo->prepare("
+        INSERT INTO CUSTOMER (Name, Email, PhoneNum)
+        VALUES (?, ?, ?)
+    ");
+    $stmt->execute([$cust_name, $cust_email, $cust_phone]);
+    $customerID = $pdo->lastInsertId();
+
+    // INSERT PAYMENT
+    $stmt = $pdo->prepare("
+        INSERT INTO PAYMENT (Method, Amount, CardholderName, CardLastFour)
+        VALUES ('Card', ?, ?, ?)
+    ");
     $stmt->execute([$finalTotal, $cardname, substr($cardnum, -4)]);
     $paymentID = $pdo->lastInsertId();
 
-    $stmt = $pdo->prepare("INSERT INTO DESTINATION (StreetAddress, ZIP, City, State) VALUES (?, ?, ?, ?)");
+    // INSERT DESTINATION
+    $stmt = $pdo->prepare("
+        INSERT INTO DESTINATION (StreetAddress, ZIP, City, State)
+        VALUES (?, ?, ?, ?)
+    ");
     $stmt->execute([$address, $zip, $city, $state]);
     $addressID = $pdo->lastInsertId();
 
-    // Cart Reset
+    // INSERT ORDER
+    $stmt = $pdo->prepare("
+        INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes)
+        VALUES (?, ?, ?, ?)
+    ");
+    $stmt->execute([$customerID, $paymentID, $addressID, "Order placed by ".$name]);
+    $orderID = $pdo->lastInsertId();
+
+    // INSERT ORDER ITEMS + UPDATE STOCK
+    foreach ($_SESSION['cart'] as $id => $qty) {
+
+        $stmt = $pdo->prepare("
+            INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity)
+            VALUES (?, ?, ?)
+        ");
+        $stmt->execute([$orderID, $id, $qty]);
+
+        $stmt = $pdo->prepare("
+            UPDATE CAKE
+            SET NumInStock = NumInStock - ?
+            WHERE CakeID = ?
+        ");
+        $stmt->execute([$qty, $id]);
+    }
+
+    // Clear cart
     $_SESSION['cart'] = [];
     $processed = true;
+
 }
 
 ?>

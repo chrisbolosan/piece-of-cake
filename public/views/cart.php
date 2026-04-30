@@ -73,12 +73,21 @@ function remove_from_cart() {
 
 // Updates the cart 
 function update_cart() {
+    global $pdo;
+
     $id = intval($_POST['product_id']);
     $qty = intval($_POST['quantity']);
+
+    $stmt = $pdo->prepare("SELECT NumInStock FROM CAKE WHERE CakeID = ?");
+    $stmt->execute([$id]);
+    $stock = $stmt->fetchColumn();
 
     if ($qty <= 0) {
         unset($_SESSION['cart'][$id]);
     } else {
+        if ($qty > $stock) {
+            $qty = $stock;
+        }
         $_SESSION['cart'][$id] = $qty;
     }
 
@@ -201,6 +210,7 @@ function place_order() {
     $stmt = $pdo->prepare("
         INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity)
         VALUES (?, ?, ?)
+        UPDATE CAKE SET NumInStock = NumInStock - ?
     ");
 
     foreach ($cart as $cake_id => $qty) {
