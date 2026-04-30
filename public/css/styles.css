@@ -90,6 +90,36 @@ nav a:hover {
 .footer-right{
     text-align: right;
 }
+.banner-bg {
+    width: 100%;
+    height: auto; /* Adjust this to your preferred height */
+    background-image: url('../images/header.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /* OPTIONS: 
+       'contain' shows the whole image (no cropping)
+       'cover' fills the space (might crop edges) */
+    background-size: contain; 
+    
+    margin-bottom: 10px;
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+}
+
+.footer-left{
+    display: flex;
+    align-items: center;
+}
+
+.footer-right{
+    text-align: right;
+}
 
 .footer-logo {
     width: 120px;
@@ -155,8 +185,6 @@ nav a:hover {
     padding-left: 20px;
     line-height: 1.8;
 }
-<<<<<<< HEAD
-=======
 
 .main-button {
     background-color: #1e2366;
@@ -167,4 +195,4 @@ nav a:hover {
     cursor: pointer;
     border-radius: 6px;
 }
->>>>>>> d18d9a5 (making the cart look pretty)
+
