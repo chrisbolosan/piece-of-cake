@@ -1,3 +1,7 @@
+<?php
+$isLocked = $order['OrderStatus'] !== 'Processing';
+?>
+
 <h2>Order #<?= $order['OrderID'] ?></h2>
 
 <p><strong>Status:</strong> <?= htmlspecialchars($order['OrderStatus']) ?></p>
@@ -59,6 +63,7 @@
 
 	<label>Delivery Date:</label>
 	<input type="datetime-local" name="delivery"
+		<?= $isLocked ? 'disabled' : '' ?>
 		value="<?= $order['TimeDateDelivery'] ? date('Y-m-d\TH:i', strtotime($order['TimeDateDelivery'])) : '' ?>">
 	<br>
 	<br>
