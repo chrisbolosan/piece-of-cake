@@ -285,9 +285,21 @@ function show_cart() {
     echo '<h3 style="text-align:center; color:#1e2366;">Total: $' . number_format($total, 2) . '</h3>';
 
     echo '
-        <div style="text-align:center; margin-top:20px;">
-            <a href="index.php?page=billing" class="main-button;">Proceed to Checkout</a>
+        <div style="text-align:center; margin-top:30px;">
+            <a href="index.php?page=billing" 
+                style="
+                    display:inline-block;
+                    background:#1e2366;
+                    color:white;
+                    padding:14px 30px;
+                    font-size:18px;
+                    text-decoration:none;
+                    border-radius:8px;
+                    font-weight:bold;
+                   ">
+                Proceed to Checkout
+            </a>
         </div>
-      ';
+    ';
 }
 ?>

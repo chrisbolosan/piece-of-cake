@@ -9,6 +9,8 @@
         <h2><?=htmlspecialchars($cake['Flavor'])?> Cake</h2>
         <p><strong>Size:</strong> <?=htmlspecialchars($cake['Size'])?></p>
 
+		<p><strong>Icing:</strong> <?=htmlspecialchars($cake['Frosting'])?></p>
+
         <h3>$<?=number_format((float)$cake['BasePrice'],2)?></h3>
 		<p><strong>In Stock:</strong> <?= $cake['NumInStock'] ?></p>
 
