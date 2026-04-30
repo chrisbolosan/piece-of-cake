@@ -32,18 +32,32 @@ switch ($action) {
 
 // Adds the products to cart in the specified quantities
 function add_to_cart() {
+    global $pdo;
+
     $id = intval($_POST['product_id']);
     $qty = intval($_POST['quantity']);
+
+    // Get stock from database
+    $stmt = $pdo->prepare("SELECT NumInStock FROM CAKE WHERE CakeID = ?");
+    $stmt->execute([$id]); 
+    $stock = $stmt->fetchColumn();
 
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
-    if (isset($_SESSION['cart'][$id])) {
-        $_SESSION['cart'][$id] += $qty;
-    } else {
-        $_SESSION['cart'][$id] = $qty;
+    // Current quantity already in cart
+    $current = $_SESSION['cart'][$id] ?? 0;
+
+    // New desired quantity
+    $newQty = $current + $qty; 
+    
+    // Enforce stock limit
+    if ($newQty > $stock) {
+        $newQty = $stock;
     }
+
+    $_SESSION['cart'][$id] = $newQty;
 
     header("Location: index.php?page=cart");
     exit;
@@ -179,6 +193,9 @@ function place_order() {
     VALUES (?, ?, ?, ?)
     ");
     $stmt->execute([$customer_id, $payment_id, $address_id, "Order placed"]);
+    
+    // Capture Order ID
+    $order_id = $pdo->lastInsertId();
 
     // Inserts ORDER_ITEM rows
     $stmt = $pdo->prepare("
@@ -193,7 +210,7 @@ function place_order() {
     // Clears cart
     $_SESSION['cart'] = [];
 
-   
+    
     // Confirmation message
     echo '
         <div class="card" style="max-width:500px; margin:50px auto; text-align:center;">
@@ -235,7 +252,7 @@ function show_cart() {
 
         echo '
 <div class="card" style="max-width:700px; margin:20px auto; display:flex; justify-content:space-between; align-items:center;">
-            
+           
     <div>
         <h3 style="margin:0;">' . htmlspecialchars($p['Flavor']) . '</h3>
         <p style="margin:5px 0;">$' . number_format($p['BasePrice'],2) . ' each</p>
@@ -261,5 +278,6 @@ function show_cart() {
         <div style="text-align:center; margin-top:20px;">
             <a href="index.php?page=billing" class="main-button;">Proceed to Checkout</a>
         </div>
-       ';
+      ';
 }
+?>

@@ -48,23 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$address, $zip, $city, $state]);
     $addressID = $pdo->lastInsertId();
 
-    $stmt = $pdo->prepare("INSERT INTO ORDERS (CustomerID, PaymentID, AddressID, Notes) VALUES (1, ?, ?, ?)");
-    $stmt->execute([$paymentID, $addressID, $name]);
-    $orderID = $pdo->lastInsertId();
-
-    foreach ($_SESSION['cart'] as $id => $qty) {
-    $stmt = $pdo->prepare("
-        INSERT INTO ORDER_ITEM (OrderID, CakeID, Quantity)
-        VALUES (?, ?, ?)
-        ON DUPLICATE KEY UPDATE Quantity = Quantity + VALUES(Quantity)
-    ");
-    $stmt->execute([$orderID, $id, $qty]);
-    }
-
-
+    // Cart Reset
     $_SESSION['cart'] = [];
     $processed = true;
 }
+
 ?>
 <!DOCTYPE html>
 <html>
