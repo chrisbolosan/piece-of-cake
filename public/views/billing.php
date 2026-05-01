@@ -90,9 +90,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute([$orderID, $id, $qty]);
 
         $stmt = $pdo->prepare("
-            UPDATE CAKE
-            SET NumInStock = NumInStock - ?
-            WHERE CakeID = ?
+		UPDATE CAKE
+		SET NumInStock = NumInStock - ?
+		WHERE CakeID = ? AND NumInStock >= ?
         ");
         $stmt->execute([$qty, $id]);
     }
