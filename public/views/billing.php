@@ -33,6 +33,8 @@
 }
 </style>
 
+<?php if (!$processed): ?>
+
 <div class="card">
 	<h3>Subtotal: $<?= number_format($total, 2) ?></h3>
 
@@ -66,3 +68,21 @@
 		<button class="btn-primary" type="submit">Place Order</button>
 	</form>
 </div>
+
+<?php else: ?>
+
+<div class="card text-center">
+	<h1>Order Placed </h1>
+
+	<p>Your order number is <strong><?= $orderID ?></strong></p>
+	<p>Total Paid: <strong>$<?= number_format($finalTotal, 2) ?></strong></p>
+	<p>Status: Processing</p>
+
+	<br>
+
+	<a href="index.php?page=track" class="btn-primary">
+		Track Your Order
+	</a>
+</div>
+
+<?php endif; ?>
