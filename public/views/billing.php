@@ -1,4 +1,4 @@
-<styles>
+<style>
 .card {
     max-width: 700px;
     margin: 30px auto;

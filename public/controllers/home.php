@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../includes/config.php';
 
 try {
-	$prepared = $pdo->query("SELECT * FROM CAKE);
+	$prepared = $pdo->query("SELECT * FROM CAKE");
 	$cakes = $prepared->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
 	$cakes = [];

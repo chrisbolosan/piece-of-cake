@@ -1,5 +1,6 @@
 <?php
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 session_start();
 require_once __DIR__ . '/../includes/config.php';
 
@@ -33,7 +34,7 @@ $orderID = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-	$cust_name  = $_POST['cust_name'];
+	$cust_name = $_POST['cust_name'];
 	$cust_email = $_POST['cust_email'];
 	$cust_phone = $_POST['cust_phone'];
 
@@ -51,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		$stmt = $pdo->prepare("
 			INSERT INTO PAYMENT (Method, Amount, PaymentStatus, CardholderName, CardLastFour)
-			VALUES ('Card', ?, 'Paid', ?, ?)
+			VALUES ('Card', ?, 'Completed', ?, ?)
 		");
 
 		$stmt->execute([$finalTotal, $cardname, substr($cardnum, -4)]);
