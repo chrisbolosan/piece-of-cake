@@ -1,6 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+require_once __DIR__ . '/../includes/errors.php';
 session_start();
 require_once __DIR__ . '/../includes/config.php';
 
