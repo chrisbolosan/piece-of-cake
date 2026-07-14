@@ -21,7 +21,7 @@ foreach ($_SESSION['cart'] as $id => $qty) {
 $discount = 0;
 $promoUsed = false;
 
-if (isset($_POST['promo']) && strtoupper(trim($_POST['promo'])) === "URMOM") {
+if (isset($_POST['promo']) && strtoupper(trim($_POST['promo'])) === "WELCOME15") {
 	$discount = $total * 0.15;
 	$promoUsed = true;
 }
