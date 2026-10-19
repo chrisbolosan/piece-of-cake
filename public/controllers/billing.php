@@ -58,12 +58,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		$paymentID = $pdo->lastInsertId();
 
-		$stmt = $pdo->prepare("
-			INSERT INTO CUSTOMER (Name, Email, PhoneNum)
-			VALUES (?, ?, ?)
-		");
-		$stmt->execute([$cust_name, $cust_email, $cust_phone]);
-		$customerID = $pdo->lastInsertId();
+		// Find-or-create the customer. Email is UNIQUE, so a returning
+		// customer must reuse their existing row — blindly inserting would
+		// throw a duplicate-key error and roll back the entire order.
+		$stmt = $pdo->prepare("SELECT CustomerID FROM CUSTOMER WHERE Email = ?");
+		$stmt->execute([$cust_email]);
+		$customerID = $stmt->fetchColumn();
+
+		if ($customerID === false) {
+			$stmt = $pdo->prepare("
+				INSERT INTO CUSTOMER (Name, Email, PhoneNum)
+				VALUES (?, ?, ?)
+			");
+			$stmt->execute([$cust_name, $cust_email, $cust_phone]);
+			$customerID = $pdo->lastInsertId();
+		} else {
+			$stmt = $pdo->prepare("
+				UPDATE CUSTOMER SET Name = ?, PhoneNum = ? WHERE CustomerID = ?
+			");
+			$stmt->execute([$cust_name, $cust_phone, $customerID]);
+		}
 
 		$stmt = $pdo->prepare("
 			INSERT INTO DESTINATION (StreetAddress, ZIP, City, State)
